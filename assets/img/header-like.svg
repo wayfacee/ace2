@@ -1,0 +1,15 @@
+<svg width="45" height="40" viewBox="0 0 45 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_7_62)">
+<path d="M31 4C28.524 4 26.144 4.921 24.296 6.595C23.594 7.23 22.993 7.952 22.5 8.749C22.007 7.952 21.406 7.23 20.704 6.594C18.856 4.921 16.476 4 14 4C8.486 4 4 8.486 4 14C4 17.722 5.158 20.66 7.871 23.825C11.813 28.425 21.79 35.445 22.213 35.742C22.299 35.803 22.4 35.833 22.5 35.833C22.6 35.833 22.701 35.803 22.787 35.742C23.21 35.445 33.187 28.425 37.13 23.825C39.842 20.66 41 17.722 41 14C41 8.486 36.514 4 31 4ZM36.371 23.175C32.876 27.251 24.191 33.516 22.5 34.72C20.809 33.516 12.124 27.251 8.63 23.175C6.085 20.206 5 17.462 5 14C5 9.037 9.038 5 14 5C16.227 5 18.37 5.829 20.032 7.335C20.87 8.095 21.55 8.991 22.052 9.999C22.222 10.339 22.778 10.339 22.948 9.999C23.45 8.991 24.13 8.095 24.968 7.336C26.63 5.829 28.773 5 31 5C35.962 5 40 9.037 40 14C40 17.462 38.915 20.206 36.371 23.175Z" fill="#676767"/>
+</g>
+<defs>
+<filter id="filter0_f_7_62" x="0" y="0" width="45" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_7_62"/>
+</filter>
+<clipPath id="clip0_7_62">
+<rect width="37" height="32" fill="white" transform="translate(4 4)"/>
+</clipPath>
+</defs>
+</svg>

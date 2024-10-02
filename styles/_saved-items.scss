@@ -1,0 +1,25 @@
+.saved-items__container {
+  padding-top: 55px;
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .saved-items__message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+    margin-top: 63px;
+    .secondary-btn {
+      max-width: 309px;
+      width: 100%;
+      height: 53px;
+    }
+    p {
+      color: #616161;
+    }
+  }
+}

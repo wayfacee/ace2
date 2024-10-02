@@ -1,0 +1,85 @@
+.personal-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 12px;
+  .tab-content {
+    display: none;
+    text-align: center;
+    padding-bottom: 150px;
+
+    .secondary-btn {
+      width: 310px;
+      height: 53px;
+      border-radius: 999px;
+    }
+    .primary-btn {
+      margin-top: 24px;
+      width: 188px;
+      height: 45px;
+    }
+  }
+  #profile {
+    align-items: center;
+    justify-content: center;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  #profile.active {
+    display: flex;
+  }
+
+  .personal-account__nav {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(220, 222, 221, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    padding: 20px 90px;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    gap: 10px;
+    a {
+      cursor: pointer;
+      color: inherit;
+    }
+    .tab-link__active {
+      text-decoration: underline;
+    }
+  }
+  #orders p {
+    margin-bottom: 95px;
+  }
+  #profile {
+    color: #707071;
+    flex-direction: column;
+    gap: 55px;
+    h2 {
+      color: #000;
+    }
+  }
+
+  .personal-account__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+}
+#editProfileForm,
+#changePasswordForm,
+#addressForm {
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  button {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__btns">
+                <button style="margin-bottom: 0px;" id="menu-btn" class="primary-btn">menu</button>
+                <button class="primary-btn" onclick="goBack()">back</button>
+            </div>
+            <div class="header__logo">
+                <a href="main.html">
+                    <svg width="76" height="34" viewBox="0 0 76 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.72 0C14.03 0 15.2601 0 16.4901 0C16.6701 0.16 16.71 0.369998 16.78 0.559998C17.92 3.55 19.05 6.53 20.19 9.52C23.07 17.09 25.95 24.67 28.83 32.24C28.92 32.47 29 32.7 29.07 32.9C29.05 32.95 29.04 32.97 29.03 32.98C29.02 32.99 29 33 28.98 33C27.65 33.01 26.32 33.01 24.98 33.02C24.87 33.02 24.76 33.01 24.61 33C24.55 32.84 24.48 32.69 24.42 32.53C23.31 29.47 22.21 26.41 21.1 23.35C21.02 23.12 20.92 22.89 20.84 22.68C20.39 22.61 9.08 22.59 8.37 22.65C8.2 22.79 8.17004 23.01 8.10004 23.2C6.98004 26.23 5.86 29.27 4.75 32.3C4.67 32.53 4.58005 32.76 4.49005 32.97C3.89005 33.04 0.45 33.03 0 32.96C0.02 32.89 0.0200488 32.81 0.0500488 32.74C4.27005 21.85 8.49003 10.94 12.72 0ZM19.36 18.87C19.38 18.8 19.41 18.76 19.4 18.73C17.86 14.45 16.32 10.17 14.78 5.9C14.76 5.83 14.7 5.78 14.66 5.72C14.61 5.75 14.56 5.76 14.55 5.79C12.96 10.09 11.37 14.39 9.78003 18.69C9.76003 18.74 9.79004 18.8 9.79004 18.85C10.3 18.94 15.0901 18.97 18.9301 18.91C19.0801 18.91 19.23 18.89 19.36 18.87Z"
+                            fill="currentColor" />
+                        <path
+                            d="M75.5714 22.6098C75.3214 22.6198 75.0914 22.6298 74.8714 22.6298C69.8614 22.6298 64.8614 22.6298 59.8514 22.6298C59.6314 22.6298 59.4014 22.5898 59.1914 22.6798C59.0814 22.8798 59.1414 23.0698 59.1514 23.2598C59.2614 24.3098 59.4714 25.3298 59.8714 26.2998C60.0114 26.6498 60.1914 26.9898 60.3714 27.3198C61.1414 28.6598 62.2714 29.5298 63.7814 29.8798C64.9914 30.1598 66.2014 30.1798 67.3914 29.8398C68.4414 29.5398 69.3314 28.9798 70.0714 28.1798C70.4914 27.7198 70.6714 27.4198 71.0714 26.4698C71.4914 26.3998 74.4514 26.3798 75.1114 26.4498C75.2114 26.5398 75.1614 26.6598 75.1514 26.7698C75.0614 27.4598 74.8214 28.0998 74.5014 28.7098C74.1614 29.3498 73.7214 29.9298 73.2114 30.4398C71.5914 32.0698 69.6614 33.1098 67.3814 33.4498C65.2714 33.7598 63.2014 33.5898 61.2014 32.8398C59.7214 32.2898 58.4814 31.3998 57.4614 30.1998C56.1814 28.7098 55.3814 26.9798 54.9414 25.0798C54.6814 23.9398 54.5514 22.7898 54.5514 21.6298C54.5514 20.7198 54.5414 19.7998 54.6014 18.8898C54.7414 16.7698 55.2814 14.7598 56.4014 12.9398C57.5114 11.1198 59.0014 9.71978 61.0114 8.91978C62.6514 8.25978 64.3514 7.99978 66.1014 8.16978C67.7514 8.31978 69.3114 8.79978 70.7114 9.70978C72.2014 10.6798 73.3014 11.9898 74.1314 13.5498C74.8414 14.8698 75.2514 16.2898 75.4714 17.7698C75.6914 19.2998 75.6714 20.8498 75.6114 22.3898C75.6114 22.4198 75.5914 22.4698 75.5714 22.6098ZM59.1114 18.8498C59.2514 18.8798 59.3214 18.8998 59.4014 18.8998C63.2214 18.8998 67.0514 18.8998 70.8714 18.8898C70.9214 18.8898 70.9714 18.8598 71.0614 18.8198C71.0614 18.7098 71.0714 18.5998 71.0614 18.4998C71.0214 18.1598 70.9914 17.8198 70.9314 17.4798C70.7614 16.4998 70.5214 15.5398 70.0314 14.6698C69.2414 13.2698 68.1214 12.2698 66.5614 11.8098C66.1014 11.6698 65.6314 11.5598 65.1614 11.5798C63.0314 11.6798 61.3814 12.6398 60.2814 14.4798C59.4914 15.8198 59.2314 17.2898 59.1114 18.8498Z"
+                            fill="currentColor" />
+                        <path
+                            d="M46.9881 26.43C47.8381 26.35 50.6881 26.37 51.0981 26.46C51.0781 26.98 50.9381 27.47 50.7481 27.95C50.4081 28.83 49.8881 29.6 49.2381 30.28C47.5481 32.04 45.4981 33.14 43.0681 33.45C41.0381 33.71 39.0381 33.54 37.1081 32.81C35.6881 32.28 34.4881 31.44 33.4781 30.3C32.1081 28.75 31.2581 26.95 30.8181 24.94C30.5881 23.92 30.4581 22.88 30.4581 21.83C30.4581 20.94 30.4381 20.04 30.4781 19.15C30.5881 17.01 31.0881 14.97 32.1781 13.11C33.0481 11.62 34.1781 10.38 35.6681 9.49002C36.7281 8.86002 37.8681 8.46002 39.0781 8.25002C40.4181 8.01002 41.7681 7.97002 43.1181 8.14002C45.5681 8.45002 47.6681 9.47002 49.2981 11.36C50.1181 12.31 50.6781 13.4 50.9581 14.64C50.9981 14.8 51.0181 14.97 51.0481 15.16C50.5681 15.28 50.1181 15.21 49.6681 15.22C49.1881 15.23 48.7181 15.22 48.2381 15.22C47.7781 15.22 47.3281 15.22 46.8681 15.22C46.7981 15.07 46.7381 14.95 46.6881 14.83C45.7281 12.81 44.1281 11.73 41.9081 11.56C41.2581 11.51 40.6181 11.58 39.9781 11.71C38.0881 12.11 36.7881 13.24 35.9281 14.93C35.4981 15.77 35.2781 16.68 35.1381 17.6C34.8381 19.7 34.8381 21.81 35.1281 23.92C35.2781 25 35.5881 26.04 36.0881 27.01C36.9781 28.72 38.3681 29.71 40.2881 29.98C41.2781 30.12 42.2581 30.1 43.2281 29.83C44.2981 29.53 45.2081 28.96 45.9681 28.16C46.4581 27.66 46.7681 27.08 46.9881 26.43Z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
+                <p>privacy & policy</p>
+            </div>
+            <div class="header__controls">
+                <div class="favorite-btn">
+                    <img class="blured" src="/assets/img/header-like.svg" alt="">
+                </div>
+                <button onclick="openBag()" class="secondary-btn">bag</button>
+            </div>
+        </div>
+        <div class="menu">
+            <img src="/assets/img/menu.svg" alt="">
+            <div class="menu__close" onclick="closeMenu()"><img src="/assets/img/close.svg" alt="closeMenu">
+            </div>
+            <div class="menu__content">
+                <div class="menu__hole"></div>
+                <ul class="menu__list">
+                    <li class="menu__item"><a href="#" class="menu__link">New Arrivals</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Man</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Woman</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Accessories</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Ace Print</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Denim</a></li>
+                </ul>
+
+                <div class="menu__currency">
+                    <p class="menu__currency-text"><a class="menu__link" href="">UAH</a> > <a class="menu__link"
+                            href="">EUR</a> > <a class="menu__link" href="">USD</a></p>
+                </div>
+
+                <div class="menu__language">
+                    <p class="menu__language-text"><a class="menu__link" href="">ENG</a> > <a class="menu__link"
+                            href="">UA</a></p>
+                </div>
+
+                <a href="login.html" class="menu__link">Login In</a>
+                <ul class="menu__social-list">
+                    <li class="menu__social-item"><a href="https://t.me/AceLiveJournal" target="_blank"
+                            class="menu__link">Telegram</a>
+                    </li>
+                    <li class="menu__social-item"><a href="https://www.instagram.com/ace.est.2020?igsh=bWc1N2lyaHpucXlw"
+                            target="_blank" class="menu__link">Instagram</a>
+                    </li>
+                </ul>
+                <a href="about-us.html" class="menu__link">About Us</a>
+                <a href="#" class="menu__link modal-trigger">Career</a>
+                <a href="#" class="menu__link modal-trigger">Contacts</a>
+
+                <div class="menu__info-links">
+                    <a class="menu__link" href="delivery-payment.html">DELIVERY & PAYMENT</a>
+                    <a class="menu__link menu__link__active" href="privacy-policy.html">PRIVACY POLICY</a>
+                </div>
+
+
+                <form id="subscribe-form" class="menu__subscribe">
+                    <input id="email-input" required type="email" class="menu__subscribe-input"
+                        placeholder="e-mail address">
+                    <button type="submit" class="menu__subscribe-button">subscribe</button>
+                </form>
+
+                <div class="menu__copyright">
+                    © 2024 ACE
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="control-buttons">
+            <img class="control-buttons__top" src="/assets/img/top.svg" alt="top btn">
+        </div>
+    </header>
+    <main class="privacy-policy">
+        <div class="privacy-policy__container">
+            <p>This privacy and processing of personal data policy (“policy”) completes the public offer and is an
+                integral part.</p>
+            <p>When we use “we”, “us” or “our”, we mean R. I. Vestoropskyi  individual entrepreneur company, when we use
+                “you” or “your”, we mean you, the person, who used our services.</p>
+            <br>
+            <p> R. I. Vestoropskyi individual entrepreneur company provides services on the site www.ace.clothing
+                (“Site”). Our company is registered in Ukraine and located at address 69068, Zaporizhia region,
+                Zaporizhia city, Chabanenka akademika  str., bld.11, apt.31. We consider us responsible to ensure the
+                privacy of your data. We collect, store and use your personal data according to the law of Ukraine on
+                the protection of personal data no. 2297-vi and other applicable local laws.</p>
+            <p>The purpose of the policy is to inform you about how we will use your personal data received by us from
+                you through the site. Please review it carefully before continuing to use the site. By visiting our
+                site, you agree to follow this policy and agree to its terms.</p>
+            <p>Consent to processing personal data</p>
+            <br>
+            <p>Giving your consent to the processing of personal data when registering on this site, ordering or
+                redirecting messages through the follow-up form, you agree with the policy and its application when
+                processing your personal data.</p>
+            <br>
+            <p>At this, you have the right to anywhere to withdraw your consent to the processing of personal data given
+                by you by sending to us the appropriate statement to the address: 69002, Zaporizhia region, Zaporizhia
+                city, Chabanenka akademika  str., bld.11. In these certain cases provided by applicable law, we can
+                continue processing your data and after such a withdrawal of the consent (for example, for the purpose
+                of ful compliance with the terms according to the end user license agreement).</p>
+            <br>
+            <p>Your consent to the processing of personal data, the data on the site is equated to the agreement in the
+                written form, as it is defined in art. 2 laws of Ukraine on the protection of personal data no. 2297-vi.
+            </p>
+            <br>
+            <p>Your personal data and how we use it</p>
+            <br>
+            <p>You can use the biggest part of our site without providing any personal data. However, if you want to
+                send us a message or message online, receive a mailout or special offers by e-mail, order goods or
+                services, then you need to provide specific data.</p>
+            <br>
+            <p>Your personal data may include your name, surname, address or location, telephone number and e-mail
+                address, text of your message or any other information you send us through the follow-up form.</p>
+            <p>Above stated personal data will be processed by the mixed processing of personal data (collection,
+                systematization, accumulation, storage, refining (updating, change of usage, diffusion, transmission,
+                anonymization, blocking, destruction of personal data).</p>
+            <br>
+            <p>We request your phone number to continue the processing of your order and to report its status. This
+                number may be given to a courier who directly delivers the ordered goods, for we could keep you informed
+                of the delivery process. You may also provide us with data about your parameters so we could be able to
+                ensure a more individual approach to organizing your purchase process.</p>
+            <br>
+            <p>We cooperate with third parties, including Fondy, to process payments, and only these persons will have
+                access to data of your payment cards.</p>
+            <br>
+            <p>We keep information about goods purchased by you. This way, we can quickly solve any problems or
+                requests, and also make sure all information sent to you is relevant.</p>
+            <br>
+            <p>When you visit our site, we automatically collect specific data about you. To get detailed information
+                about this question, please contact the section below “cookies and other tracking technologies”.</p>
+            <br>
+            <p>The purpose of processing your personal data is to provide your services in accordance with the terms and
+                conditions of the end user license agreement.</p>
+            <br>
+            <h2>Collected information allows us to:</h2>
+            <br>
+            <ul>
+                <li>provide goods and services you ordered;</li>
+                <li>confirm your personality and details of your method of payment or account of a credit Card;</li>
+                <li>manage our site and provide services to clients;</li>
+                <li>plan and manage your commercial activity, including analysis of your habits, preferences On goods
+                    and styles;</li>
+                <li>communicate with you (including e-mail and telephone in case you provided such data);</li>
+                <li>communicate you about our offers, services or goods.</li>
+            </ul>
+            <br>
+            <p>Your consent, data on the site, is valid until the purpose of processing your personal data is achieved.
+            </p>
+            <p>You agree that we can transfer your personal data to our service providers and agents to achieve the
+                above stated purpose. This will be made confidentially and only to the extent permitted by the personal
+                data and advertising law. Such service providers and agents without restriction may be any third parties
+                that participate in the provision of services to customers, processing of the payments, identity
+                verification and detection of fraud cases, hosting and site support.</p>
+            <br>
+            <p>In exclusive cases, we can disclose your account data and your personal data to others, if it will be
+                required in accordance with law; for compliance or application of the end user license agreement and
+                other documents; for protection of rights, property, security of  R. I. Vestoropskyi  company, our users
+                or other third parties (under conditions that this will not breach your rights and freedoms).</p>
+            <p>Disclosure of your account and other personal data includes the exchange of information with other
+                companies and organizations for personal identification and for protection against fraud. Specified
+                actions are performed in measure allowed by applicable laws.
+                If we sell all or part of our business or sale or transfer a property, including the sale in case of
+                bankruptcy or any other method, we may share your personal data with third parties as forming part of
+                the property under the relevant transaction. We can publish and transfer the complete, anonymous
+                statistics on the number of visitors to our site or the number of purchases to third parties, including
+                our investors.</p>
+            <br>
+            <h2>Cookie and other tracking technologies</h2>
+            <br>
+            <p>Our site uses cookie files and related technologies to ensure maximum comfort for you by providing
+                personalized data, memorizing preferences in marketing and our products as well as assisting to receive
+                correct data. By using the site, you acknowledge your acceptance of cookie policy.</p>
+            <p>The use of cookies in accordance with this notice regarding this file type. If you do not agree that we
+                use this file type, you must apply your browser settings or do not use <a
+                    href="main.html">www.ace.clothing</a></p>
+            <br>
+            <h2>What is cookie and similar technologies?</h2>
+            <br>
+            <p>Cookie file is a small file, usually consisting of letters and numbers. This file is saved on your
+                computer, tablet pc, phone or other device which you use to visit the site. Cookie files are widely used
+                by site owners to make sites work or to increase efficiency of work, and also to get analytical
+                information.</p>
+            <p>We and our service providers may use various cookie types on our sites:</p>
+            <ul>
+                <li>strongly necessary cookies. These cookie files are required for the site to work correctly, they
+                    will allow you to move our site and use its opportunity. These files do not identify you as a
+                    person. If you do not agree to use this type of files, this may affect the web site performance.ç
+                </li>
+                <li>cookie files relating to performance, efficiency and analytics. These files help us to understand
+                    the way you interact with our website, which sections visit and how much time will be spend in each
+                    of them, also they show issues of internet resource work, for example notification of errors. This
+                    will help us improve the work of the site. Cookie files relating to analytics also help us measure
+                    the efficiency of advertising campaigns and optimize the content of the sites for those who are
+                    interested in our advertising. This cookies files type cannot be used for your identification. All
+                    information that is collected and analyzed is anonymous.</li>
+                <li>unctional cookie files. These cookie files serve to recognize your returns to our site. They allow
+                    us to individually choose the site content for you, welcome you by name and remember your
+                    preferences. If you lock this type of files, this may affect the performance and functionality of
+                    the site and may limit access to the content on the site.</li>
+                <li>advertising cookie files. These cookie files record information about your actions on the internet,
+                    including visits to our site and pages, and also data on links and advertisements which you choose
+                    for view. One of the purposes we make before yourself is to reflect on our websites that content,
+                    which is most fully oriented to you. Another goal is to ensure to us and our service providers the
+                    possibility of providing advertising or other information in more exactly conformity with your
+                    express interests. (in doing so, we and our suppliers attract partners such as information portals,
+                    platforms, data management and platform learning demand, which provide assistance in the processing
+                    of such data.) for example, if you view a page of our website dedicated to particular goods, we can
+                    make these on all our sites or other sites you see advertisement associated with this (or analogous)
+                    goods and related services.</li>
+            </ul>
+            <p>We may optionally use other data and information collected with the use of the cookie files specified,
+                including information obtained from third parties for purpose to provide you with advertisement.</p>
+            <br>
+            <h2>How is other information collected and used?</h2>
+            <br>
+            <p>We and our service providers can use cookie files for various purposes, including:</p>
+            <ul>
+                <li>understand which areas of the site  are most interesting for you.</li>
+                <li>process your orders.</li>
+                <li>analysis information about your visiting pages to improve our site.</li>
+                <li>provide advertising, messages and contents created by us on this site and sites of other persons,
+                    taking into account your interests.</li>
+                <li>help you obtain the necessary information.</li>
+                <li>determine the number of visitors and the how they use our site — to increase the efficiency of the
+                    site and for the best understanding the interests of their audience how</li>
+            </ul>
+            <br>
+            <h2>Long cookie files are stored on the device?</h2>
+            <br>
+            <p>Some cookies are acting from the time of your login to the site to the end of this specific work
+                session in the browser. When closing the browser, these files become unnecessary and automatically
+                deleted. Such cookie files are called “session”.</p>
+            <p>Some cookie files are stored on the device and between sessions in the browser – they are not deleted
+                after closing the browser. Such cookie files are called “permanent”. Period of storage of permanent
+                cookie files on the device is different for different cookie files. We and other companies using the
+                permanent cookie files for various purposes: for example, to determine exactly how often you visit our
+                website or how often you shall be returned, as time changes the nature of the use of our website
+                changes, as well as to evaluate the effectiveness of advertising.</p>
+            <br>
+            <h2>Who places cookie files on the device?</h2>
+            <br>
+            <p>Cookie files may be placed on your device by the administration of the site  www.ace.clothing. These
+                cookie files are called “own”. Some cookie files may be placed on your device by other operators. Such
+                cookie files are called “third parties” files.</p>
+            <br>
+            <p>We and third parties can use cookie files to find out when you visit our sites, the way you deal with
+                e-mail, advertising and other content. Cookie files are basis for collection and usage of the summary
+                and other information that is not associated with the identification of individual users (for example,
+                about the operating system, browser version and url-address from which the page was moved to, including
+                the e-mails or advertisements) – thanks to this we can provide you wide opportunities and analyze the
+                site visiting routes. Such technology allows to calculate the number of users who visited a specific
+                service, going to a link from a specific banner outside of this site, by a text link and exervision. In
+                addition, it serves as a tool for collecting generalized statistics on the use of the site for the
+                purpose of an analytical study and helps us optimize our sites, to offer you advertisement according to
+                your interests as described below.</p>
+            <br>
+            <h2>How are online advertising and mobile advertising used?</h2>
+            <br>
+            <p>Together with third parties, including technology partners and service providers participating in the
+                interests of users oriented promotional activities, providing advertising and personalized content,
+                which, in our opinion and that of other advertisers will be of interest to you. Third party suppliers
+                use cookie files when implementing services for us or other companies; in such cases, we do not control
+                the use of the specified technology or obtained with this information and we are not responsible for any
+                actions or policy of the third partis. </p>
+            <p>Advertisement may provide to you based on the nature of your online activity or the use of mobile devices
+                as well as based on your actions when searching for your responses to one of our advertisements or
+                emails, pages you visit, your geographic region or other information. Such announcements may appear on
+                our site or on third party sites. Technological partners we cooperate with and who help us to carry out
+                advertising campaigns taking into account your interests, may be participants of self-regulated
+                associations.</p>
+            <br>
+            <h2>How to manage cookie files?</h2>
+            <br>
+            <p>Most internet browsers are initially set to automatically accept cookies. You can change the settings to
+                lock the cookie or warn the user when the files of this type will be sent to the device. There are
+                multiple ways to manage a cookie. Please see the browser instructions to learn more about how to adjust
+                or change the browser settings. If you disable a cookie which we use, this may affect your work on the
+                internet, when you may not be able to receive personal information when visiting site. If you use
+                various devices to view and access to our website (for example, computer, smartphone, tablet, etc.), you
+                should be sure that on each device each browser is set up in accordance with your view for work with
+                cookie files.</p>
+            <br>
+            <p>Access to your personal data</p>
+            <br>
+            <p>To receive information about what personal data we process, either to direct any other request regarding
+                your rights as a subject of personal data (including, for example, the right to correct any inaccuracies
+                or opposed to the use data), please contact us by phone +38 050 870 88 80 (from 12 a.m. To 6 p.m.
+                without break and weekend). Copies of your personal data and information about them are provided to you
+                for free.</p>
+            <br>
+            <p>Communication and marketing</p>
+            <br>
+            <p>To subscribe to our mailout with information about our new goods, services, interesting materials and
+                events, to receive special offers by electronic or telephone, please fill in the subscription blank. If
+                you make purchases on our website, we also may also use your e-mail address to send our mailout and
+                report on special offers.</p>
+        </div>
+    </main>
+    <div id="modal-career" class="modal">
+        <div class="modal-content">
+            <button class="modal__close" data-modal="modal-career">
+                <img src="./assets/img/close.svg" alt="close">
+            </button>
+            <p>Please send CVS, RESUMES and PORTFOLIOS to <br>
+                <a href="mailto:careerst@ace.clothing">careerst@ace.clothing</a>
+            </p>
+        </div>
+    </div>
+    <div id="modal-contacts" class="modal">
+        <div class="modal-content">
+            <button class="modal__close" data-modal="modal-contacts">
+                <img src="./assets/img/close.svg" alt="close">
+            </button>
+            <h3>customer support</h3>
+            <p>our client advisors are available Mon-Sat 9:30am - 7pm</p>
+            <p><a href="mailto:info@ace.clothing.com">info@ace.clothing.com</a></p>
+
+            <h3>call us at <a href="tel:+380508708880">+380 50 870 88 80</a></h3>
+            <h3>ace store </h3>
+            <p>antonovych,22<br>
+                kiev
+            </p>
+            <p> mon-fri: 11:00 - 20:00 <br>
+                sat-sun: 12:00 - 20:00</p>
+            <p><a href="main.html">visit us</a></p>
+            <h3>Mokotowska 46
+                <p>coming soon</p>
+            </h3>
+        </div>
+    </div>
+
+    <script src="/script/index.js"></script>
+</body>
+
+
+</html>

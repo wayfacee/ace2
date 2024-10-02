@@ -1,0 +1,32 @@
+.privacy-policy {
+  margin: 0 auto;
+  margin-top: 45px;
+}
+
+.privacy-policy__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #616161;
+  font-size: 12px;
+  max-width: 632px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  ul {
+    list-style-position: inside;
+  }
+  a {
+    color: #616161;
+  }
+  h2 {
+    color: #000;
+  }
+}
+.header__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}

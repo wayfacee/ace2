@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__btns">
+                <button id="menu-btn" class="primary-btn">menu</button>
+            </div>
+
+            <div class="header__logo">
+                <a href="main.html">
+                    <svg width="76" height="34" viewBox="0 0 76 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.72 0C14.03 0 15.2601 0 16.4901 0C16.6701 0.16 16.71 0.369998 16.78 0.559998C17.92 3.55 19.05 6.53 20.19 9.52C23.07 17.09 25.95 24.67 28.83 32.24C28.92 32.47 29 32.7 29.07 32.9C29.05 32.95 29.04 32.97 29.03 32.98C29.02 32.99 29 33 28.98 33C27.65 33.01 26.32 33.01 24.98 33.02C24.87 33.02 24.76 33.01 24.61 33C24.55 32.84 24.48 32.69 24.42 32.53C23.31 29.47 22.21 26.41 21.1 23.35C21.02 23.12 20.92 22.89 20.84 22.68C20.39 22.61 9.08 22.59 8.37 22.65C8.2 22.79 8.17004 23.01 8.10004 23.2C6.98004 26.23 5.86 29.27 4.75 32.3C4.67 32.53 4.58005 32.76 4.49005 32.97C3.89005 33.04 0.45 33.03 0 32.96C0.02 32.89 0.0200488 32.81 0.0500488 32.74C4.27005 21.85 8.49003 10.94 12.72 0ZM19.36 18.87C19.38 18.8 19.41 18.76 19.4 18.73C17.86 14.45 16.32 10.17 14.78 5.9C14.76 5.83 14.7 5.78 14.66 5.72C14.61 5.75 14.56 5.76 14.55 5.79C12.96 10.09 11.37 14.39 9.78003 18.69C9.76003 18.74 9.79004 18.8 9.79004 18.85C10.3 18.94 15.0901 18.97 18.9301 18.91C19.0801 18.91 19.23 18.89 19.36 18.87Z"
+                            fill="currentColor" />
+                        <path
+                            d="M75.5714 22.6098C75.3214 22.6198 75.0914 22.6298 74.8714 22.6298C69.8614 22.6298 64.8614 22.6298 59.8514 22.6298C59.6314 22.6298 59.4014 22.5898 59.1914 22.6798C59.0814 22.8798 59.1414 23.0698 59.1514 23.2598C59.2614 24.3098 59.4714 25.3298 59.8714 26.2998C60.0114 26.6498 60.1914 26.9898 60.3714 27.3198C61.1414 28.6598 62.2714 29.5298 63.7814 29.8798C64.9914 30.1598 66.2014 30.1798 67.3914 29.8398C68.4414 29.5398 69.3314 28.9798 70.0714 28.1798C70.4914 27.7198 70.6714 27.4198 71.0714 26.4698C71.4914 26.3998 74.4514 26.3798 75.1114 26.4498C75.2114 26.5398 75.1614 26.6598 75.1514 26.7698C75.0614 27.4598 74.8214 28.0998 74.5014 28.7098C74.1614 29.3498 73.7214 29.9298 73.2114 30.4398C71.5914 32.0698 69.6614 33.1098 67.3814 33.4498C65.2714 33.7598 63.2014 33.5898 61.2014 32.8398C59.7214 32.2898 58.4814 31.3998 57.4614 30.1998C56.1814 28.7098 55.3814 26.9798 54.9414 25.0798C54.6814 23.9398 54.5514 22.7898 54.5514 21.6298C54.5514 20.7198 54.5414 19.7998 54.6014 18.8898C54.7414 16.7698 55.2814 14.7598 56.4014 12.9398C57.5114 11.1198 59.0014 9.71978 61.0114 8.91978C62.6514 8.25978 64.3514 7.99978 66.1014 8.16978C67.7514 8.31978 69.3114 8.79978 70.7114 9.70978C72.2014 10.6798 73.3014 11.9898 74.1314 13.5498C74.8414 14.8698 75.2514 16.2898 75.4714 17.7698C75.6914 19.2998 75.6714 20.8498 75.6114 22.3898C75.6114 22.4198 75.5914 22.4698 75.5714 22.6098ZM59.1114 18.8498C59.2514 18.8798 59.3214 18.8998 59.4014 18.8998C63.2214 18.8998 67.0514 18.8998 70.8714 18.8898C70.9214 18.8898 70.9714 18.8598 71.0614 18.8198C71.0614 18.7098 71.0714 18.5998 71.0614 18.4998C71.0214 18.1598 70.9914 17.8198 70.9314 17.4798C70.7614 16.4998 70.5214 15.5398 70.0314 14.6698C69.2414 13.2698 68.1214 12.2698 66.5614 11.8098C66.1014 11.6698 65.6314 11.5598 65.1614 11.5798C63.0314 11.6798 61.3814 12.6398 60.2814 14.4798C59.4914 15.8198 59.2314 17.2898 59.1114 18.8498Z"
+                            fill="currentColor" />
+                        <path
+                            d="M46.9881 26.43C47.8381 26.35 50.6881 26.37 51.0981 26.46C51.0781 26.98 50.9381 27.47 50.7481 27.95C50.4081 28.83 49.8881 29.6 49.2381 30.28C47.5481 32.04 45.4981 33.14 43.0681 33.45C41.0381 33.71 39.0381 33.54 37.1081 32.81C35.6881 32.28 34.4881 31.44 33.4781 30.3C32.1081 28.75 31.2581 26.95 30.8181 24.94C30.5881 23.92 30.4581 22.88 30.4581 21.83C30.4581 20.94 30.4381 20.04 30.4781 19.15C30.5881 17.01 31.0881 14.97 32.1781 13.11C33.0481 11.62 34.1781 10.38 35.6681 9.49002C36.7281 8.86002 37.8681 8.46002 39.0781 8.25002C40.4181 8.01002 41.7681 7.97002 43.1181 8.14002C45.5681 8.45002 47.6681 9.47002 49.2981 11.36C50.1181 12.31 50.6781 13.4 50.9581 14.64C50.9981 14.8 51.0181 14.97 51.0481 15.16C50.5681 15.28 50.1181 15.21 49.6681 15.22C49.1881 15.23 48.7181 15.22 48.2381 15.22C47.7781 15.22 47.3281 15.22 46.8681 15.22C46.7981 15.07 46.7381 14.95 46.6881 14.83C45.7281 12.81 44.1281 11.73 41.9081 11.56C41.2581 11.51 40.6181 11.58 39.9781 11.71C38.0881 12.11 36.7881 13.24 35.9281 14.93C35.4981 15.77 35.2781 16.68 35.1381 17.6C34.8381 19.7 34.8381 21.81 35.1281 23.92C35.2781 25 35.5881 26.04 36.0881 27.01C36.9781 28.72 38.3681 29.71 40.2881 29.98C41.2781 30.12 42.2581 30.1 43.2281 29.83C44.2981 29.53 45.2081 28.96 45.9681 28.16C46.4581 27.66 46.7681 27.08 46.9881 26.43Z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
+            </div>
+            <div class="header__controls">
+                <div class="favorite-btn">
+                    <img class="blured" src="/assets/img/header-like.svg" alt="">
+                </div>
+                <button onclick="openBag()" class="secondary-btn">bag</button>
+            </div>
+        </div>
+        <div class="menu">
+            <img src="/assets/img/menu.svg" alt="">
+            <div class="menu__close" onclick="closeMenu()"><img src="/assets/img/close.svg" alt="closeMenu">
+            </div>
+            <div class="menu__content">
+                <div class="menu__hole"></div>
+                <ul class="menu__list">
+                    <li class="menu__item "><a href="#" class="menu__link">New Arrivals</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Man</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Woman</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Accessories</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Ace Print</a></li>
+                    <li class="menu__item"><a href="#" class="menu__link">Denim</a></li>
+                </ul>
+
+                <div class="menu__currency">
+                    <p class="menu__currency-text"><a class="menu__link" href="">UAH</a> > <a class="menu__link"
+                            href="">EUR</a> > <a class="menu__link" href="">USD</a></p>
+                </div>
+
+                <div class="menu__language">
+                    <p class="menu__language-text"><a class="menu__link" href="">ENG</a> > <a class="menu__link"
+                            href="">UA</a></p>
+                </div>
+
+                <a href="login.html" class="menu__link menu__link__active">Login In</a>
+                <ul class="menu__social-list">
+                    <li class="menu__social-item"><a href="https://t.me/AceLiveJournal" target="_blank"
+                            class="menu__link">Telegram</a>
+                    </li>
+                    <li class="menu__social-item"><a href="https://www.instagram.com/ace.est.2020?igsh=bWc1N2lyaHpucXlw"
+                            target="_blank" class="menu__link">Instagram</a>
+                    </li>
+                </ul>
+                <a href="about-us.html" class="menu__link">About Us</a>
+                <a href="#" class="menu__link modal-trigger">Career</a>
+                <a href="#" class="menu__link modal-trigger">Contacts</a>
+
+                <div class="menu__info-links">
+                    <a class="menu__link" href="delivery-payment.html">DELIVERY & PAYMENT</a>
+                    <a class="menu__link" href="privacy-policy.html">PRIVACY POLICY</a>
+                </div>
+
+
+                <form id="subscribe-form" class="menu__subscribe">
+                    <input id="email-input" required type="email" class="menu__subscribe-input"
+                        placeholder="e-mail address">
+                    <button type="submit" class="menu__subscribe-button">subscribe</button>
+                </form>
+
+                <div class="menu__copyright">
+                    © 2024 ACE
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <main class="cart">
+        <div class="cart__container">
+            <div id="cart-container">
+            </div>
+            <div class="cart-total">
+                <p>Total: </p>
+                <p id="total-amount">3,200.00UAH.</p>
+            </div>
+        </div>
+        <div class="checkout__container">
+            <div class="note">
+                Please note: duties & taxes are not calculated at the checkout and it is the customer's responsibility
+                to pay international customs on arrival checkout.
+            </div>
+            <a href="checkout.html" class="primary-btn checkout-button">Check Out</a>
+        </div>
+    </main>
+    <div id="modal-career" class="modal">
+        <div class="modal-content">
+            <button class="modal__close" data-modal="modal-career">
+                <img src="./assets/img/close.svg" alt="close">
+            </button>
+            <p>Please send CVS, RESUMES and PORTFOLIOS to <br>
+                <a href="mailto:careerst@ace.clothing">careerst@ace.clothing</a>
+            </p>
+        </div>
+    </div>
+    <div id="modal-contacts" class="modal">
+        <div class="modal-content">
+            <button class="modal__close" data-modal="modal-contacts">
+                <img src="./assets/img/close.svg" alt="close">
+            </button>
+            <h3>customer support</h3>
+            <p>our client advisors are available Mon-Sat 9:30am - 7pm</p>
+            <p><a href="mailto:info@ace.clothing.com">info@ace.clothing.com</a></p>
+
+            <h3>call us at <a href="tel:+380508708880">+380 50 870 88 80</a></h3>
+            <h3>ace store </h3>
+            <p>antonovych,22<br>
+                kiev
+            </p>
+            <p> mon-fri: 11:00 - 20:00 <br>
+                sat-sun: 12:00 - 20:00</p>
+            <p><a href="main.html">visit us</a></p>
+            <h3>Mokotowska 46
+                <p>coming soon</p>
+            </h3>
+        </div>
+    </div>
+
+    <script src="/script/index.js"></script>
+</body>
+
+
+</html>
