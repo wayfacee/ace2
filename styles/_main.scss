@@ -27,8 +27,7 @@
 }
 
 .product-grid__item {
-  z-index: -1;
-  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,6 +91,6 @@
   }
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 80px;
+    row-gap: 80px;
   }
 }

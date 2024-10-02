@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 50px;
+
+  padding: 50px 0px;
   justify-content: center;
   align-items: center;
 
@@ -92,3 +93,20 @@
     }
   }
 }
+
+    @media(max-width: 768px){
+      .login .primary-input { 
+        width: 200px;
+       }
+       .register .primary-input{ 
+        width: 300px;
+       }
+       .register .phone__field #phoneNumber {
+        width: 200px;
+        }
+
+       .login .login__options{ 
+        gap: 20px;
+        align-items: center;
+       }
+    }

@@ -192,6 +192,7 @@ h6 {
 
 .header {
   position: sticky;
+  width: 100%;
   top: 0;
   background: linear-gradient(180deg, rgb(231, 236, 234) 0%, rgba(130, 131, 125, 0) 100%);
 }
@@ -711,8 +712,6 @@ h6 {
 }
 
 .product-grid__item {
-  z-index: -1;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -772,7 +771,7 @@ h6 {
   }
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 80px;
+    row-gap: 80px;
   }
 }
 .privacy-policy {
@@ -888,7 +887,7 @@ h6 {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 50px;
+  padding: 50px 0px;
   justify-content: center;
   align-items: center;
 }
@@ -967,6 +966,21 @@ h6 {
   height: 53px;
 }
 
+@media (max-width: 768px) {
+  .login .primary-input {
+    width: 200px;
+  }
+  .register .primary-input {
+    width: 300px;
+  }
+  .register .phone__field #phoneNumber {
+    width: 200px;
+  }
+  .login .login__options {
+    gap: 20px;
+    align-items: center;
+  }
+}
 .register__field {
   display: flex;
   flex-direction: column;

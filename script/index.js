@@ -435,9 +435,7 @@ if ($filter) {
         (product) => `
                   <div class="product-grid__item" data-name="${product.name}">
             <img src="${product.image}" alt="${product.name}">
-            <img class="product-like-icon ${
-              favoriteProducts.includes(product.name) ? 'selected' : ''
-            }" src="assets/img/header-like.svg" alt="Like">
+
             <p>${product.name}</p>
             <p class="product-price">${product.price}грн</p> 
           </div>
@@ -1108,7 +1106,7 @@ if ($toTopBtn) {
   });
 }
 
-$favoriteBtn = document.querySelector('.favorite-btn');
+let $favoriteBtn = document.querySelector('.favorite-btn');
 $favoriteBtn.addEventListener('click', () => {
   const isLogin = localStorage.getItem('isLogin') === 'true';
   if (isLogin) {
