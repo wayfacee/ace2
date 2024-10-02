@@ -454,11 +454,25 @@ if ($filter) {
       }
     });
 
-  document.addEventListener('click', function (event) {
-    if ($filter.classList.contains('open') && !event.target.closest('.filter') && !event.target.closest('#filter-button')) {
-      $filter.classList.remove('open');
-    }
-  });
+    document.addEventListener('click', function (event) {
+      // Check if the filter is open and if the clicked target is outside the filter and filter button
+      if ($filter.classList.contains('open') && 
+          !event.target.closest('.filter') && 
+          !event.target.closest('#filter-button')) {
+        
+        const productGridItems = document.querySelectorAll('.product-grid__item');
+    
+        // If there are any product grid items, reset their zIndex and close the filter
+        if (productGridItems.length > 0) {
+          productGridItems.forEach(item => {
+            item.style.zIndex = ''; // Reset zIndex
+          });
+        }
+    
+        $filter.classList.remove('open'); // Close the filter
+      }
+    });
+    
 
   let selectedColors = [];
   let selectedSizes = [];
@@ -680,9 +694,11 @@ if (
         if (product) {
           savedProductGrid.innerHTML += `
             <div class="saved-product-item">
-              <img src="${product.image}" alt="${product.name}">
-              <p>${product.name}</p>
-              <p class="product-price">${product.price}грн</p>
+              <a href="product.html?name=${encodeURIComponent(product.name)}" class="saved-product-link">
+                <img src="${product.image}" alt="${product.name}">
+                <p>${product.name}</p>
+                <p class="product-price">${product.price} грн</p>
+              </a>
               <button class="remove-favorite-btn" data-name="${product.name}">Remove</button>
             </div>
           `;
@@ -769,6 +785,7 @@ function updateFavoriteCount() {
       likeIcon.classList.add('blured');
   }
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
