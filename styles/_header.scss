@@ -63,7 +63,7 @@
 }
 
 .menu__content {
-  top: 200px;
+  top: 210px;
   right: 2px;
   position: absolute;
   display: flex;
@@ -312,7 +312,7 @@
     transition: transform 0.3s ease, filter 0.3s ease;
     cursor: pointer;
     &.selected {
-      filter: blur(1px);
+      filter: blur(2px);
     }
     &:hover {
       transform: scale(1.1);
@@ -372,6 +372,7 @@
   height: 78px;
   border-radius: 999px;
 }
+
 
 .search-input {
   position: absolute;

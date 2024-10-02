@@ -4,7 +4,7 @@
   margin: 0 auto;
   margin-top: 58px;
   max-width: 100%;
-
+  z-index: -1;
   overflow: hidden;
   position: relative;
 }
@@ -115,6 +115,9 @@
   .product__link {
     color: inherit;
   }
+}
+.menu.open + .product__main-content{
+  z-index: -1;
 }
 @media (max-width: 1080px) {
   .product {

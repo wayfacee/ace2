@@ -1,18 +1,36 @@
 // Header
 const menuBtn = document.querySelector('#menu-btn');
+const menu = document.querySelector('.menu');
+
 
 menuBtn.addEventListener('click', () => {
-  openMenu();
+  if (menu.classList.contains('open')) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 });
 
-const $menu = document.querySelector('.menu');
-
 function openMenu() {
-  $menu.classList.add('open');
+  menu.classList.add('open');
+  const productGridItems = document.querySelectorAll('.product-grid__item');
+  if (productGridItems.length > 0) {
+    productGridItems.forEach(item => {
+      item.style.zIndex = '-1';
+    });
+  }
 }
+
 function closeMenu() {
-  $menu.classList.remove('open');
+  menu.classList.remove('open');
+  const productGridItems = document.querySelectorAll('.product-grid__item');
+  if (productGridItems.length > 0) {
+    productGridItems.forEach(item => {
+      item.style.zIndex = '';
+    });
+  }
 }
+
 // back btn
 function goBack() {
   window.history.back();
@@ -416,24 +434,37 @@ if ($filter) {
     .getElementById('filter-button')
     .addEventListener('click', function () {
       $filter.classList.add('open');
+      const productGridItems = document.querySelectorAll('.product-grid__item');
+      if (productGridItems.length > 0) {
+        productGridItems.forEach(item => {
+          item.style.zIndex = '-1';
+        });
+      }
     });
 
   document
     .getElementById('filter-close')
     .addEventListener('click', function () {
       $filter.classList.remove('open');
-    });
-
-    document.addEventListener('click', function (event) {
-      if ($filter.classList.contains('open') && !event.target.closest('.filter') && !event.target.closest('#filter-button')) {
-        $filter.classList.remove('open');
+      const productGridItems = document.querySelectorAll('.product-grid__item');
+      if (productGridItems.length > 0) {
+        productGridItems.forEach(item => {
+          item.style.zIndex = '';
+        });
       }
     });
+
+  document.addEventListener('click', function (event) {
+    if ($filter.classList.contains('open') && !event.target.closest('.filter') && !event.target.closest('#filter-button')) {
+      $filter.classList.remove('open');
+    }
+  });
 
   let selectedColors = [];
   let selectedSizes = [];
   let selectedGender = null;
   let selectedCategory = null;
+
   function renderProducts(productsToRender) {
     const productGrid = document.querySelector('.product-grid');
     productGrid.innerHTML = productsToRender
@@ -441,7 +472,8 @@ if ($filter) {
         (product) => `
                   <div class="product-grid__item" data-name="${product.name}">
             <img src="${product.image}" alt="${product.name}">
-
+            <img class="product-like-icon ${favoriteProducts.includes(product.name) ? 'selected' : ''
+          }" src="assets/img/header-like.svg" alt="Like">
             <p>${product.name}</p>
             <p class="product-price">${product.price}грн</p> 
           </div>
@@ -450,7 +482,6 @@ if ($filter) {
       .join('');
 
     // Додаємо обробник кліку на кожну картку
-
     document.querySelectorAll('.product-grid__item').forEach((item) => {
       item.addEventListener('click', function () {
         const productName = item.getAttribute('data-name');
@@ -501,6 +532,7 @@ if ($filter) {
 
     renderProducts(filteredProducts);
   }
+
   function toggleSelection(array, value) {
     const index = array.indexOf(value);
     if (index === -1) {
@@ -509,6 +541,7 @@ if ($filter) {
       array.splice(index, 1);
     }
   }
+
   function toggleFavoriteProduct(icon) {
     const productItem = icon.closest('.product-grid__item');
     const productName = productItem.getAttribute('data-name');
@@ -616,7 +649,6 @@ if ($filter) {
 
   renderProducts(products);
 }
-
 if (
   window.location.pathname.includes('saved-items.html') ||
   window.location.pathname.includes('personal-account.html')
@@ -626,113 +658,118 @@ if (
 
   const savedProductGrid = document.querySelector('.saved-items__container');
   if (savedProductGrid) {
-    savedProductGrid.innerHTML = favoriteProducts
-      .map(
-        (name) => `
-          <div class="saved-product-item">
-            <p>${name}</p>
-          </div>
-        `
-      )
-      .join('');
+    // Clear the existing content
+    savedProductGrid.innerHTML = '';
+
+    if (favoriteProducts.length === 0) {
+      // If no favorites, display the empty message
+      savedProductGrid.innerHTML = `
+        <div class="saved-items__items">
+          <h2>Your list is empty</h2>
+        </div>
+        <div class="saved-items__message">
+          <h2>Looking for your items?</h2>
+          <p>Sign in to pick up to where you left off or to start building your wishlist.</p>
+          <a class="secondary-btn" href="login.html">sign in</a>
+        </div>
+      `;
+    } else {
+      // Iterate through the favorite products and display them
+      favoriteProducts.forEach((productName) => {
+        const product = products.find(p => p.name === productName); // Assuming 'products' is your product list
+        if (product) {
+          savedProductGrid.innerHTML += `
+            <div class="saved-product-item">
+              <img src="${product.image}" alt="${product.name}">
+              <p>${product.name}</p>
+              <p class="product-price">${product.price}грн</p>
+              <button class="remove-favorite-btn" data-name="${product.name}">Remove</button>
+            </div>
+          `;
+        }
+      });
+
+      // Add event listeners to remove buttons
+      document.querySelectorAll('.remove-favorite-btn').forEach((button) => {
+        button.addEventListener('click', function () {
+          const productName = button.getAttribute('data-name');
+          removeFavoriteProduct(productName);
+        });
+      });
+    }
+  }
+}
+
+function removeFavoriteProduct(productName) {
+  let favoriteProducts =
+    JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+  
+  // Filter out the product to be removed
+  favoriteProducts = favoriteProducts.filter(item => item !== productName);
+
+  // Update localStorage
+  localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
+  
+  // Update the UI
+  updateFavoriteCount(); // Update count in header
+  // Re-render the saved items
+  if (window.location.pathname.includes('saved-items.html') || window.location.pathname.includes('personal-account.html')) {
+    location.reload(); // Reload the page to reflect changes
   }
 }
 
 function toggleFavoriteProduct(icon) {
   const productItem = icon.closest('.product-grid__item');
   const productName = productItem.getAttribute('data-name');
-  const favoriteProducts =
+  let favoriteProducts =
     JSON.parse(localStorage.getItem('favoriteProducts')) || [];
 
-  // Перевіряємо, чи вже товар у списку обраних
+  // Check if the product is already in favorites
   const isFavorite = favoriteProducts.includes(productName);
 
   if (isFavorite) {
-    // Видаляємо товар зі списку обраних
+    // Remove the product from favorites
     favoriteProducts = favoriteProducts.filter((item) => item !== productName);
     icon.classList.remove('selected');
   } else {
-    // Додаємо товар до списку обраних
+    // Add the product to favorites
     favoriteProducts.push(productName);
     icon.classList.add('selected');
   }
 
-  // Зберігаємо оновлений список обраних у localStorage
+  // Save the updated favorites list to localStorage
   localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
-
-  // Оновлюємо відображення кількості обраних товарів
-  updateFavoriteCount();
-}
-
-const favoriteBtn = document.querySelector('.favorite-btn');
-if (favoriteBtn) {
   updateFavoriteCount();
 }
 
 function updateFavoriteCount() {
   const favoriteBtn = document.querySelector('.favorite-btn');
-  if (!favoriteBtn) return; // Якщо елемент не знайдено, припиняємо виконання
+  if (!favoriteBtn) return; // If the element is not found, stop execution
 
   let favoriteProducts =
-    JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+      JSON.parse(localStorage.getItem('favoriteProducts')) || [];
 
-  // Перевіряємо, чи елемент span з кількістю вже існує
+  // Find or create the span element for the count
   let favoriteCountElement = favoriteBtn.querySelector('.favorite-count');
   if (!favoriteCountElement) {
-    // Якщо span елемент ще не створений, створюємо його
-    favoriteCountElement = document.createElement('span');
-    favoriteCountElement.classList.add('favorite-count');
-    favoriteBtn.appendChild(favoriteCountElement); // Додаємо до favorite-btn
+      favoriteCountElement = document.createElement('span');
+      favoriteCountElement.classList.add('favorite-count');
+      favoriteBtn.appendChild(favoriteCountElement); // Add to favorite-btn
   }
 
-  // Встановлюємо значення кількості обраних товарів або очищуємо текст
+  // Set the count text or clear it
   favoriteCountElement.innerText =
-    favoriteProducts.length > 0 ? favoriteProducts.length : '';
+      favoriteProducts.length > 0 ? favoriteProducts.length : '';
 
-  // Якщо є обрані товари, прибираємо клас "blured", якщо немає — додаємо.
+  // If there are selected items, remove the "blured" class; otherwise, add it
   const likeIcon = favoriteBtn.querySelector('img');
   if (favoriteProducts.length > 0) {
-    likeIcon.classList.remove('blured');
+      likeIcon.classList.remove('blured');
   } else {
-    likeIcon.classList.add('blured');
+      likeIcon.classList.add('blured');
   }
 }
 
-// Перевіряємо, чи існує кнопка пошуку
-const searchButton = document.querySelector('.control-buttons__search');
-
-if (searchButton) {
-  // Показуємо або ховаємо поле пошуку при натисканні на іконку пошуку
-  searchButton.addEventListener('click', function () {
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput.style.display === 'none') {
-      searchInput.style.display = 'block'; // Показуємо поле пошуку
-      searchInput.focus(); // Автоматично фокусуємо на поле пошуку
-    } else {
-      searchInput.style.display = 'none'; // Ховаємо поле пошуку
-    }
-  });
-
-  // Додаємо обробник натискання Enter для поля пошуку
-  document
-    .getElementById('searchInput')
-    .addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        const searchTerm = event.target.value.toLowerCase(); // Отримуємо значення з поля вводу
-        filterProducts(searchTerm); // Викликаємо функцію пошуку
-      }
-    });
-}
-
-function filterProducts(searchTerm) {
-  // Фільтруємо продукти за назвою
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm)
-  );
-
-  // Викликаємо рендер функцію з відфільтрованими продуктами
-  renderProducts(filteredProducts);
-}
 
 document.addEventListener('DOMContentLoaded', function () {
   const registerForm = document.getElementById('registerForm');
@@ -1648,3 +1685,8 @@ if (selectElement) {
     selectElement.appendChild(option);
   });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Call the updateFavoriteCount function when the page loads
+  updateFavoriteCount();
+});

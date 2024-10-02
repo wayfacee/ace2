@@ -200,7 +200,7 @@ h6 {
 }
 
 .menu__content {
-  top: 200px;
+  top: 210px;
   right: 2px;
   position: absolute;
   display: flex;
@@ -427,7 +427,7 @@ h6 {
   cursor: pointer;
 }
 .filter__color-button.selected {
-  filter: blur(1px);
+  filter: blur(2px);
 }
 .filter__color-button:hover {
   transform: scale(1.1);
@@ -705,6 +705,7 @@ h6 {
   height: auto;
   max-width: 1440px;
   margin: 0 auto;
+  z-index: -1;
 }
 
 .main__banner {
@@ -723,6 +724,7 @@ h6 {
 }
 
 .product-grid__item {
+  position: relative;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -1235,6 +1237,7 @@ h6 {
   margin: 0 auto;
   margin-top: 58px;
   max-width: 100%;
+  z-index: -1;
   overflow: hidden;
   position: relative;
 }
@@ -1351,6 +1354,10 @@ h6 {
 }
 .product__info .product__link {
   color: inherit;
+}
+
+.menu.open + .product__main-content {
+  z-index: -1;
 }
 
 @media (max-width: 1080px) {
