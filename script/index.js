@@ -437,7 +437,7 @@ if ($filter) {
             <img src="${product.image}" alt="${product.name}">
             <img class="product-like-icon ${
               favoriteProducts.includes(product.name) ? 'selected' : ''
-            }" src="/assets/img/header-like.svg" alt="Like">
+            }" src="assets/img/header-like.svg" alt="Like">
             <p>${product.name}</p>
             <p class="product-price">${product.price}грн</p> 
           </div>
