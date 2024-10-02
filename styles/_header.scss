@@ -9,6 +9,9 @@
   width: 95%;
   font-size: 12px;
 }
+#back-btn{
+  position: absolute;
+}
 
 .header__logo {
   position: relative;
@@ -452,9 +455,18 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  position: relative;
 }
 
+.back-btn{
+  top: 40px;
+  position: absolute;
+}
 @media (max-width: 768px) {
+  .back-btn{
+    top: 40px;
+    position: absolute;
+  }
   .header__btns {
     width: 56px;
   }
