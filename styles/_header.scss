@@ -13,7 +13,7 @@
 .header__logo {
   position: relative;
   display: inline-flex;
-  margin-left: 43px;
+
   flex-direction: column;
   align-items: center;
   p {
@@ -69,7 +69,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
   text-align: center;
 }
 
@@ -444,14 +444,26 @@
     text-decoration: underline;
   }
 }
+.header__btns {
+  display: flex;
+  width: 106px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
 
 @media (max-width: 768px) {
-  .header__logo {
-    margin-left: 0px;
+  .header__btns {
+    width: 56px;
   }
+
   #menu-btn {
     margin-bottom: 50px;
-  }
+    }
+    .header__btns {
+      gap: 20px !important;
+    }
   .filter__reset {
     display: none;
     z-index: 10;

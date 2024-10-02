@@ -105,8 +105,8 @@ const products = [
     category: 'outerwear',
     color: '#4d8986',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'man',
@@ -119,8 +119,8 @@ const products = [
     category: 'dresses',
     color: '#9ac5a2',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
@@ -133,8 +133,8 @@ const products = [
     category: 'sweater',
     color: '#1b1b1b',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
@@ -147,8 +147,8 @@ const products = [
     category: 'jeans',
     color: '#48575c',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M'],
     gender: 'man',
@@ -161,8 +161,8 @@ const products = [
     category: 't-shirts',
     color: '#ffffff',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L'],
     gender: 'man',
@@ -175,8 +175,8 @@ const products = [
     category: 'skirts',
     color: '#e07a5f',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M'],
     gender: 'woman',
@@ -189,8 +189,8 @@ const products = [
     category: 'outerwear',
     color: '#2a9d8f',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
@@ -203,8 +203,8 @@ const products = [
     category: 'outerwear',
     color: '#a1463f',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
@@ -217,8 +217,8 @@ const products = [
     category: 'pants',
     color: '#3c419f',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'L', 'XL'],
     gender: 'man',
@@ -231,8 +231,8 @@ const products = [
     category: 'jeans',
     color: '#292727',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'XL'],
     gender: 'man',
@@ -245,8 +245,8 @@ const products = [
     category: 'sweater',
     color: '#d9b5af',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
@@ -259,8 +259,8 @@ const products = [
     category: 'outerwear',
     color: '#9d3c3a',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['XL'],
     gender: 'man',
@@ -273,8 +273,8 @@ const products = [
     category: 'dresses',
     color: '#e4c6e8',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M'],
     gender: 'woman',
@@ -287,8 +287,8 @@ const products = [
     category: 'outerwear',
     color: '#8a3b9b',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'man',
@@ -301,8 +301,8 @@ const products = [
     category: 'pants',
     color: '#b5d2a3',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['XL'],
     gender: 'man',
@@ -315,8 +315,8 @@ const products = [
     category: 'sweater',
     color: '#cc7070',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M'],
     gender: 'woman',
@@ -329,8 +329,8 @@ const products = [
     category: 'outerwear',
     color: '#1b1b1b',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'XL'],
     gender: 'man',
@@ -343,8 +343,8 @@ const products = [
     category: 'dresses',
     color: '#d9b5af',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'XL'],
     gender: 'woman',
@@ -357,8 +357,8 @@ const products = [
     category: 'sweater',
     color: '#4d8986',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'XL'],
     gender: 'man',
@@ -371,8 +371,8 @@ const products = [
     category: 'pants',
     color: '#48575c',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'man',
@@ -385,8 +385,8 @@ const products = [
     category: 'outerwear',
     color: '#3c419f',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M'],
     gender: 'man',
@@ -399,8 +399,8 @@ const products = [
     category: 'dresses',
     color: '#e4c6e8',
     colors: {
-      black: '/assets/img/product-2.png',
-      white: '/assets/img/product-2.png',
+      black: 'assets/img/product-2.png',
+      white: 'assets/img/product-2.png',
     },
     sizes: ['L', 'XL'],
     gender: 'woman',
@@ -422,6 +422,12 @@ if ($filter) {
     .getElementById('filter-close')
     .addEventListener('click', function () {
       $filter.classList.remove('open');
+    });
+
+    document.addEventListener('click', function (event) {
+      if ($filter.classList.contains('open') && !event.target.closest('.filter') && !event.target.closest('#filter-button')) {
+        $filter.classList.remove('open');
+      }
     });
 
   let selectedColors = [];
