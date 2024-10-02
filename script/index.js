@@ -101,7 +101,7 @@ window.onclick = function (event) {
 const products = [
   {
     name: 'JACKET SHIELD 1.0',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'outerwear',
     color: '#4d8986',
     colors: {
@@ -111,11 +111,11 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'man',
     price: 1200,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'DRESS GLAM 2.1',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'dresses',
     color: '#9ac5a2',
     colors: {
@@ -125,11 +125,11 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
     price: 800,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'SWEATER WARMTH 3.0',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'sweater',
     color: '#1b1b1b',
     colors: {
@@ -139,11 +139,11 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
     price: 500,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'JEANS EDGE 4.0',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'jeans',
     color: '#48575c',
     colors: {
@@ -153,11 +153,11 @@ const products = [
     sizes: ['S', 'M'],
     gender: 'man',
     price: 600,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'T-SHIRT PEACE 0.2',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 't-shirts',
     color: '#ffffff',
     colors: {
@@ -167,11 +167,11 @@ const products = [
     sizes: ['S', 'M', 'L'],
     gender: 'man',
     price: 300,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'SKIRT GRACE 1.5',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'skirts',
     color: '#e07a5f',
     colors: {
@@ -181,11 +181,11 @@ const products = [
     sizes: ['S', 'M'],
     gender: 'woman',
     price: 400,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'BLAZER CLASSIC 5.1',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'outerwear',
     color: '#2a9d8f',
     colors: {
@@ -195,11 +195,11 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
     price: 1000,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'COAT ELEGANT 7.0',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'outerwear',
     color: '#a1463f',
     colors: {
@@ -209,11 +209,11 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
     price: 1300,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'PANTS COMFORT 2.8',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'pants',
     color: '#3c419f',
     colors: {
@@ -223,11 +223,11 @@ const products = [
     sizes: ['S', 'L', 'XL'],
     gender: 'man',
     price: 700,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'JEANS SLIM FIT 4.5',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'jeans',
     color: '#292727',
     colors: {
@@ -237,11 +237,11 @@ const products = [
     sizes: ['S', 'XL'],
     gender: 'man',
     price: 650,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'CARDIGAN SOFT 3.3',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'sweater',
     color: '#d9b5af',
     colors: {
@@ -251,11 +251,11 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'woman',
     price: 550,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'PARKA SHIELD 6.0',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'outerwear',
     color: '#9d3c3a',
     colors: {
@@ -265,11 +265,11 @@ const products = [
     sizes: ['XL'],
     gender: 'man',
     price: 1400,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'SUMMER DRESS 2.5',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'dresses',
     color: '#e4c6e8',
     colors: {
@@ -279,11 +279,11 @@ const products = [
     sizes: ['S', 'M'],
     gender: 'woman',
     price: 850,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'JACKET CASUAL 5.2',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'outerwear',
     color: '#8a3b9b',
     colors: {
@@ -293,11 +293,11 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'man',
     price: 1150,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'CHINO PANTS 2.9',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'pants',
     color: '#b5d2a3',
     colors: {
@@ -307,11 +307,11 @@ const products = [
     sizes: ['XL'],
     gender: 'man',
     price: 750,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'PULLOVER COZY 3.7',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'sweater',
     color: '#cc7070',
     colors: {
@@ -321,11 +321,11 @@ const products = [
     sizes: ['S', 'M'],
     gender: 'woman',
     price: 520,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'JACKET LEATHER 7.5',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'outerwear',
     color: '#1b1b1b',
     colors: {
@@ -335,11 +335,11 @@ const products = [
     sizes: ['S', 'M', 'XL'],
     gender: 'man',
     price: 1350,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'MIDI DRESS 5.8',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'dresses',
     color: '#d9b5af',
     colors: {
@@ -349,11 +349,11 @@ const products = [
     sizes: ['S', 'M', 'XL'],
     gender: 'woman',
     price: 900,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'HOODIE RELAX 3.9',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'sweater',
     color: '#4d8986',
     colors: {
@@ -363,11 +363,11 @@ const products = [
     sizes: ['S', 'M', 'XL'],
     gender: 'man',
     price: 650,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'PANTS CARGO 4.1',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'pants',
     color: '#48575c',
     colors: {
@@ -377,11 +377,11 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL'],
     gender: 'man',
     price: 780,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'JACKET DENIM 5.4',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'outerwear',
     color: '#3c419f',
     colors: {
@@ -391,11 +391,11 @@ const products = [
     sizes: ['S', 'M'],
     gender: 'man',
     price: 1100,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
   {
     name: 'FLORAL DRESS 2.7',
-    image: '/assets/img/product-2.png',
+    image: 'assets/img/product-2.png',
     category: 'dresses',
     color: '#e4c6e8',
     colors: {
@@ -405,7 +405,7 @@ const products = [
     sizes: ['L', 'XL'],
     gender: 'woman',
     price: 880,
-    images: ['/assets/img/product-2.png', '/assets/img/product-2.png'],
+    images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
   },
 ];
 
