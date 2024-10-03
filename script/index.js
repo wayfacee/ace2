@@ -1345,7 +1345,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let totalAmount = 0;
-
+    
     // Функція створення елемента
     function createElement(tag, className = '', textContent = '') {
       const element = document.createElement(tag);
