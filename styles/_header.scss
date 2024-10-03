@@ -585,8 +585,18 @@
     left: 49%;
     transform: translate(-50%, -50%);
     z-index: 10;
-
-    
+    img{
+      width: 82%;
+      height: 60%;
+    }
+    .menu__close{
+      top: 20px;
+    right: 38px;
+    }
+    .menu__content{
+      top: 68px;
+      scale: 0.68;
+    }
 
   }
 

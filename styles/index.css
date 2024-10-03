@@ -689,6 +689,18 @@ h6 {
     transform: translate(-50%, -50%);
     z-index: 10;
   }
+  .menu img {
+    width: 82%;
+    height: 60%;
+  }
+  .menu .menu__close {
+    top: 20px;
+    right: 38px;
+  }
+  .menu .menu__content {
+    top: 68px;
+    scale: 0.68;
+  }
   .header {
     background: linear-gradient(180deg, rgb(231, 236, 234) 0%, rgba(130, 131, 125, 0) 100%);
   }
