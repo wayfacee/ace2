@@ -626,8 +626,8 @@ h6 {
   .filter.open .filter__color-section {
     top: auto;
     position: fixed;
-    bottom: 35.5%;
-    left: 50.4%;
+    bottom: 255px;
+    left: 60%;
     right: auto;
     transform: translateX(-90%);
     z-index: 10;
@@ -635,8 +635,8 @@ h6 {
   .filter.open .filter__size-section {
     top: auto;
     position: fixed;
-    bottom: 29.7%;
-    left: 61%;
+    bottom: 212px;
+    left: 73%;
     right: auto;
     transform: translateX(-90%);
     z-index: 10;
@@ -714,6 +714,21 @@ h6 {
   .menu .menu__content {
     top: 68px;
     scale: 0.68;
+  }
+  .menu .filter.open .filter__color-section {
+    top: auto;
+    bottom: 35.5%;
+    left: 59% !important;
+    right: auto;
+    z-index: 10;
+  }
+  .menu .filter.open .filter__size-section {
+    top: auto;
+    position: fixed;
+    bottom: 29.7%;
+    left: 61%;
+    right: auto;
+    z-index: 10;
   }
 }
 @media (max-width: 1180px) {
