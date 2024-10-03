@@ -141,14 +141,22 @@
     align-items: center;
     gap: 60px;
   }
+  .product__info{
+    margin-top: 20px;
+    order: 2;
+    margin-bottom: 20px;
+    .product__description{
+      margin-top: 10px;
+    }
+  }
   
 
   .product__sidebar {
-    order: 2;
+    order: 3;
   }
 
   .product__recommendations {
-    order: 3;
+    order: 4;
   }
   .product__selections .product__label {
     text-align: start;

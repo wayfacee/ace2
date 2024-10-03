@@ -1189,6 +1189,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const productColor = urlParams.get('color') || 'black';
     const productSize = urlParams.get('size') || '';
 
+    function rearrangeElementsForMobile() {
+      const mainContentContainer = document.querySelector('.product__main-content');
+      const infoContainer = document.querySelector('.product__info');
+      const recommendationsContainer = document.querySelector('.product__recommendations');
+
+      if (window.innerWidth < 768) {
+          // Move the infoContainer after mainContentContainer for mobile view
+          if (mainContentContainer && infoContainer) {
+              if (infoContainer.parentNode !== mainContentContainer.parentNode ||
+                  infoContainer.nextElementSibling !== mainContentContainer) {
+                  mainContentContainer.parentNode.insertBefore(infoContainer, mainContentContainer.nextSibling);
+              }
+          }
+      } else {
+          // Move the infoContainer back to its original place in recommendationsContainer for larger screens
+          if (infoContainer && recommendationsContainer) {
+              if (infoContainer.parentNode !== recommendationsContainer ||
+                  infoContainer.nextElementSibling !== recommendationsContainer.firstChild) {
+                  recommendationsContainer.insertBefore(infoContainer, recommendationsContainer.firstChild);
+              }
+          }
+      }
+  }
+
+  // Initial rearrangement
+  rearrangeElementsForMobile();
     // Find the product by name
     const product = products.find((p) => p.name === productName);
 
@@ -1335,6 +1361,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.error('Add to cart button not found');
     }
+    window.addEventListener('resize', rearrangeElementsForMobile);
 }
   if (isCartPage) {
     const cartContainer = document.getElementById('cart-container');
