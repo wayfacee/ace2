@@ -693,7 +693,10 @@ h6 {
     background: linear-gradient(180deg, rgb(231, 236, 234) 0%, rgba(130, 131, 125, 0) 100%);
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 412px) {
+  .header__logo {
+    margin-bottom: 80px;
+  }
   .menu {
     top: 51%;
     left: 49%;

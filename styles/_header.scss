@@ -598,7 +598,10 @@
     );
   }
 }
-@media (max-width: 400px){
+@media (max-width: 412px){
+  .header__logo{
+    margin-bottom: 80px;
+  }
   .menu {
     top: 51%;
     left: 49%;
