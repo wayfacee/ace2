@@ -39,6 +39,17 @@ function closeMenu() {
   }
 }
 
+const colorSection = document.querySelector('.filter__color-section');
+const sizeSection = document.querySelector('.filter__size-section');
+const combinedContainer = document.querySelector('.filter__combined');
+if(combinedContainer){
+  if (window.innerWidth <= 768) {
+    combinedContainer.appendChild(colorSection);
+    combinedContainer.appendChild(sizeSection);
+}
+}
+
+
 // back btn
 function goBack() {
   window.history.back();
@@ -658,6 +669,12 @@ if ($filter) {
     selectedGender = null;
     selectedCategory = null;
     renderProducts(products);
+    const productGridItems = document.querySelectorAll('.product-grid__item');
+    if (productGridItems.length > 0) {
+      productGridItems.forEach(item => {
+        item.style.zIndex = '-1';
+      });
+    }
   }
 
   document

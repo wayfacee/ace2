@@ -608,43 +608,40 @@ h6 {
     transform: translateX(-90%);
     z-index: 10;
   }
-  .filter.open .filter__sections {
+  .filter.open .filter__combined {
     top: auto;
     position: fixed;
-    flex-direction: row;
+    display: flex;
     gap: 15px;
-    width: 258px;
-    height: 341px;
-    bottom: 8.88%;
+    width: 245px;
+    height: 340px;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    bottom: 11.9%;
     padding: 9px 20px;
-    left: 78%;
+    left: 93%;
     right: auto;
     transform: translateX(-90%);
+    background-color: rgba(212, 211, 211, 0.8);
     border: 1px solid #707071;
     z-index: 10;
   }
-  .filter.open .filter__color-section {
-    top: auto;
-    position: fixed;
-    bottom: 255px;
-    left: 60%;
+  .filter.open .filter__combined .filter__combined .filter__size-section, .filter.open .filter__combined .filter__color-section {
+    position: static;
     right: auto;
-    transform: translateX(-90%);
-    z-index: 10;
+    top: auto;
   }
-  .filter.open .filter__size-section {
-    top: auto;
-    position: fixed;
-    bottom: 212px;
-    left: 73%;
-    right: auto;
-    transform: translateX(-90%);
-    z-index: 10;
+  .filter.open .filter__combined .filter__size-section {
+    position: static;
+  }
+  .filter.open .filter__combined .filter__size-grid {
+    display: grid !important;
   }
   .filter .filter__content {
     top: auto;
     position: fixed;
-    bottom: 7%;
+    bottom: 9%;
     left: 30%;
     right: auto;
     transform: translateX(-90%);
@@ -714,21 +711,6 @@ h6 {
   .menu .menu__content {
     top: 68px;
     scale: 0.68;
-  }
-  .menu .filter.open .filter__color-section {
-    top: auto;
-    bottom: 35.5%;
-    left: 59% !important;
-    right: auto;
-    z-index: 10;
-  }
-  .menu .filter.open .filter__size-section {
-    top: auto;
-    position: fixed;
-    bottom: 29.7%;
-    left: 61%;
-    right: auto;
-    z-index: 10;
   }
 }
 @media (max-width: 1180px) {
