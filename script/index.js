@@ -1194,7 +1194,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const infoContainer = document.querySelector('.product__info');
       const recommendationsContainer = document.querySelector('.product__recommendations');
 
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1080) {
           // Move the infoContainer after mainContentContainer for mobile view
           if (mainContentContainer && infoContainer) {
               if (infoContainer.parentNode !== mainContentContainer.parentNode ||
