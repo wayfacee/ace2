@@ -993,7 +993,7 @@ h6 {
   box-shadow: 0 1px 15px 0 rgba(32, 33, 36, 0.6) !important;
 }
 .login__create-account {
-  margin-top: 85px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
