@@ -11,11 +11,14 @@ menuBtn.addEventListener('click', () => {
     openMenu();
   }
 });
-window.addEventListener("click",()=>{
-  if (menu.classList.contains('open')) {
-    closeMenu();
-  } 
-})
+if(menu){
+  window.addEventListener("click",()=>{
+    if (menu.classList.contains('open')) {
+      closeMenu();
+    } 
+  })
+}
+
 
 function openMenu() {
   menu.classList.add('open');
