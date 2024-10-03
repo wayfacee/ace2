@@ -734,7 +734,6 @@ h6 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
-  gap: 20px;
   justify-items: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -803,6 +802,11 @@ h6 {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 80px;
+  }
+}
+@media (max-width: 400px) {
+  .product-grid__item img {
+    width: 120px;
   }
 }
 .privacy-policy {
