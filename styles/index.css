@@ -809,6 +809,10 @@ h6 {
   .product-grid__item img {
     width: 120px;
   }
+  .product-like-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
 }
 .privacy-policy {
   margin: 0 auto;
