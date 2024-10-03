@@ -4,12 +4,18 @@ const menu = document.querySelector('.menu');
 
 
 menuBtn.addEventListener('click', () => {
+  event.stopPropagation()
   if (menu.classList.contains('open')) {
     closeMenu();
   } else {
     openMenu();
   }
 });
+window.addEventListener("click",()=>{
+  if (menu.classList.contains('open')) {
+    closeMenu();
+  } 
+})
 
 function openMenu() {
   menu.classList.add('open');
