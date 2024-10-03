@@ -1406,6 +1406,10 @@ h6 {
   cursor: not-allowed;
 }
 
+.product__selections .product__label {
+  font-size: 12px;
+}
+
 .product__size-btn {
   width: 60px;
   height: 26px;
