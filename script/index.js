@@ -14,6 +14,10 @@ menuBtn.addEventListener('click', () => {
 function openMenu() {
   menu.classList.add('open');
   const productGridItems = document.querySelectorAll('.product-grid__item');
+  const product = document.querySelector(".product")
+  if(product){
+    product.style.zIndex = '-1';
+  }
   if (productGridItems.length > 0) {
     productGridItems.forEach(item => {
       item.style.zIndex = '-1';
@@ -24,6 +28,10 @@ function openMenu() {
 function closeMenu() {
   menu.classList.remove('open');
   const productGridItems = document.querySelectorAll('.product-grid__item');
+  const product = document.querySelector(".product")
+  if(product){
+    product.style.zIndex = '';
+  }
   if (productGridItems.length > 0) {
     productGridItems.forEach(item => {
       item.style.zIndex = '';
@@ -1336,7 +1344,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const addToBagButton = document.querySelector('.product__button--add-to-bag');
         if (addToBagButton) {
             addToBagButton.disabled = false;
-            addToBagButton.textContent = 'add to Bag';
+            addToBagButton.textContent = 'add to bag';
         }
     }
 
