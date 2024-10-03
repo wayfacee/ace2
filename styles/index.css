@@ -951,6 +951,9 @@ h6 {
   font-size: 12px;
   color: #3e3c3c;
 }
+.login #error-message {
+  margin-top: 6px;
+}
 .login__field-name, .login__options {
   display: flex;
   width: 100%;
