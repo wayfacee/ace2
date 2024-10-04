@@ -17,9 +17,15 @@ if (menuBtn && menu) {
   window.addEventListener("click", () => {
     if (menu.classList.contains('open')) {
       closeMenu();
-    } 
+    }
+  });
+
+  // Додаємо stopPropagation для кліків всередині меню
+  menu.addEventListener('click', (event) => {
+    event.stopPropagation(); // Не закриває меню при кліку всередині
   });
 }
+
 
 
 function openMenu() {
@@ -1448,31 +1454,29 @@ document.addEventListener('DOMContentLoaded', function () {
 const searchBtn = document.getElementById('searchBtn');
 const searchInput = document.getElementById('searchInput');
 
-// Показати або сховати поле пошуку при натисканні на кнопку
-searchBtn.addEventListener('click', function () {
-  if (searchInput.style.display === 'none') {
-      searchInput.style.display = 'block';
-      searchInput.focus();
-      const productGridItems = document.querySelectorAll('.product-grid__item');
-      if (productGridItems.length > 0) {
-        productGridItems.forEach(item => {
-          item.style.zIndex = '-1';
-        });
-      }
-  } else {
-      searchInput.style.display = 'none';
-      const productGridItems = document.querySelectorAll('.product-grid__item');
-      if (productGridItems.length > 0) {
-        productGridItems.forEach(item => {
-          item.style.zIndex = '';
-        });
-      }
-  }
-});
+if (searchBtn){
+  searchBtn.addEventListener('click', function () {
+    if (searchInput.style.display === 'none') {
+        searchInput.style.display = 'block';
+        searchInput.focus();
+        const productGridItems = document.querySelectorAll('.product-grid__item');
+        if (productGridItems.length > 0) {
+          productGridItems.forEach(item => {
+            item.style.zIndex = '-1';
+          });
+        }
+    } else {
+        searchInput.style.display = 'none';
+        const productGridItems = document.querySelectorAll('.product-grid__item');
+        if (productGridItems.length > 0) {
+          productGridItems.forEach(item => {
+            item.style.zIndex = '';
+          });
+        }
+    }
+  });
 
-
-// Закриття поля пошуку при натисканні на будь-яке місце поза полем або кнопкою
-document.addEventListener('click', function (event) {
+  document.addEventListener('click', function (event) {
     if (event.target !== searchInput && event.target !== searchBtn) {
         searchInput.style.display = 'none';
         const productGridItems = document.querySelectorAll('.product-grid__item');
@@ -1488,6 +1492,10 @@ document.addEventListener('click', function (event) {
 searchInput.addEventListener('click', function (event) {
     event.stopPropagation();
 });
+}
+
+
+
 
 const countries = [
   { code: '+1', name: 'United States' },
@@ -1632,13 +1640,13 @@ const countries = [
   { code: '+674', name: 'Nauru' },
   { code: '+977', name: 'Nepal' },
   { code: '+31', name: 'Netherlands' },
+  { code: '+599', name: 'Netherlands Antilles' },
   { code: '+687', name: 'New Caledonia' },
   { code: '+64', name: 'New Zealand' },
   { code: '+505', name: 'Nicaragua' },
   { code: '+227', name: 'Niger' },
   { code: '+234', name: 'Nigeria' },
   { code: '+683', name: 'Niue' },
-  { code: '+672', name: 'Norfolk Island' },
   { code: '+850', name: 'North Korea' },
   { code: '+1670', name: 'Northern Mariana Islands' },
   { code: '+47', name: 'Norway' },
@@ -1654,13 +1662,16 @@ const countries = [
   { code: '+64', name: 'Pitcairn' },
   { code: '+48', name: 'Poland' },
   { code: '+351', name: 'Portugal' },
-  { code: '+1', name: 'Puerto Rico' },
+  { code: '+1787', name: 'Puerto Rico' },
   { code: '+974', name: 'Qatar' },
+  { code: '+242', name: 'Republic of the Congo' },
   { code: '+40', name: 'Romania' },
   { code: '+250', name: 'Rwanda' },
+  { code: '+590', name: 'Saint Barthelemy' },
   { code: '+290', name: 'Saint Helena' },
   { code: '+1869', name: 'Saint Kitts and Nevis' },
   { code: '+1758', name: 'Saint Lucia' },
+  { code: '+590', name: 'Saint Martin' },
   { code: '+508', name: 'Saint Pierre and Miquelon' },
   { code: '+1784', name: 'Saint Vincent and the Grenadines' },
   { code: '+685', name: 'Samoa' },
@@ -1707,24 +1718,25 @@ const countries = [
   { code: '+598', name: 'Uruguay' },
   { code: '+998', name: 'Uzbekistan' },
   { code: '+678', name: 'Vanuatu' },
-  { code: '+379', name: 'Vatican' },
   { code: '+58', name: 'Venezuela' },
   { code: '+84', name: 'Vietnam' },
   { code: '+681', name: 'Wallis and Futuna' },
   { code: '+967', name: 'Yemen' },
   { code: '+260', name: 'Zambia' },
-  { code: '+263', name: 'Zimbabwe' },
+  { code: '+263', name: 'Zimbabwe' }
 ];
 
-const selectElement = document.getElementById('phonePrefix');
-if (selectElement) {
-  countries.forEach((country) => {
-    const option = document.createElement('option');
-    option.value = country.code;
-    option.text = `${country.code}`;
-    selectElement.appendChild(option);
-  });
-}
+window.onload = function() {
+  const selectElement = document.getElementById('phonePrefix');
+  if (selectElement) {
+    countries.forEach((country) => {
+      const option = document.createElement('option');
+      option.value = country.code;
+      option.text = `${country.code}`;
+      selectElement.appendChild(option);
+    });
+  }
+};
 
 document.addEventListener('DOMContentLoaded', function () {
 

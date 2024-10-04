@@ -485,7 +485,7 @@ h6 {
 .search-input {
   position: absolute;
   top: 200px;
-  right: 100px;
+  right: 2.4%;
   background-color: #d9d9d9;
   width: 260px;
   border-radius: 12px;
@@ -1582,6 +1582,11 @@ h6 {
   }
 }
 @media (max-width: 600px) {
+  .product__recommendations img {
+    max-width: 150px;
+  }
+}
+@media (max-width: 600px) {
   .product__main-content {
     display: flex;
     flex-direction: row;
@@ -1621,6 +1626,11 @@ h6 {
     width: 600px;
     height: 500px;
     scroll-snap-align: center;
+  }
+}
+@media (max-width: 350px) {
+  .product__recommendations img {
+    max-width: 100px;
   }
 }
 .cart {
