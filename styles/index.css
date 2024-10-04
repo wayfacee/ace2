@@ -896,6 +896,30 @@ h6 {
   color: #000;
 }
 
+@media (max-width: 768px) {
+  .privacy-policy__container {
+    max-width: 600px;
+    width: 90%;
+  }
+}
+@media (max-width: 600px) {
+  .privacy-policy__container {
+    max-width: 500px;
+    width: 90%;
+  }
+}
+@media (max-width: 480px) {
+  .privacy-policy__container {
+    max-width: 400px;
+    width: 90%;
+  }
+}
+@media (max-width: 360px) {
+  .privacy-policy__container {
+    max-width: 300px;
+    width: 90%;
+  }
+}
 .modal {
   display: none;
   position: fixed;
