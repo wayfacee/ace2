@@ -1018,7 +1018,7 @@ h6 {
   color: #3e3c3c;
 }
 .login #error-message {
-  margin-top: 10px;
+  margin-top: 40px;
 }
 .login__field-name, .login__options {
   display: flex;
