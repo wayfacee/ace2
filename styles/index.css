@@ -1665,7 +1665,7 @@ h6 {
        object-fit: cover;
     width: 600px;
     height: 500px;
-    scroll-snap-align: center;
+    scroll-snap-align: end;
   }
 }
 @media (max-width: 600px) {
@@ -1689,7 +1689,7 @@ h6 {
        object-fit: cover;
     width: 600px;
     height: 500px;
-    scroll-snap-align: center;
+    scroll-snap-align: end;
   }
 }
 @media (max-width: 300px) {
@@ -1708,7 +1708,7 @@ h6 {
        object-fit: cover;
     width: 600px;
     height: 500px;
-    scroll-snap-align: center;
+    scroll-snap-align: end;
   }
 }
 @media (max-width: 350px) {
