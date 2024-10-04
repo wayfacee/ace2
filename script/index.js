@@ -548,6 +548,43 @@ if ($filter) {
         });
       });
     }
+    function rgbToHex(rgb) {
+      const rgbValues = rgb.match(/\d+/g).map(Number);
+      return `#${rgbValues
+        .map((val) => val.toString(16).padStart(2, '0'))
+        .join('')}`;
+    }
+    function toggleSelection(array, value) {
+      const index = array.indexOf(value);
+      if (index === -1) {
+        array.push(value);
+      } else {
+        array.splice(index, 1);
+      }
+    }
+  
+    function toggleFavoriteProduct(icon) {
+      const productItem = icon.closest('.product-grid__item');
+      const productName = productItem.getAttribute('data-name');
+  
+      // Перевіряємо, чи вже товар у списку обраних
+      const isFavorite = favoriteProducts.includes(productName);
+  
+      if (isFavorite) {
+        favoriteProducts = favoriteProducts.filter(
+          (item) => item !== productName
+        );
+        icon.classList.remove('selected');
+      } else {
+        favoriteProducts.push(productName);
+        icon.classList.add('selected');
+      }
+  
+      localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
+  
+      updateFavoriteCount();
+    }
+  
   
     function applyFilters() {
       const filteredProducts = products.filter((product) => {
