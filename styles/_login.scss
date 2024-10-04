@@ -80,6 +80,7 @@
       margin-bottom: 50px;
       text-align: center;
       font-size: 12px;
+      
     }
     h2 {
       font-size: 12px;
@@ -97,11 +98,20 @@
 }
 
     @media(max-width: 768px){
+      .login__create-account p {
+        max-width: 300px ;
+      }
       .login{
         padding-top: 150px;
       }
       .register form {
         padding-top: 120px !important;
+      }
+      .register__terms {
+        max-width: 300px !important;
+        .register__terms-checkbox {
+          gap: 5px !important;
+        }
       }
       .login .primary-input { 
         width: 300px;
@@ -126,6 +136,9 @@
       .login .primary-input { 
         width: 300px;
        }
+       .register__terms {
+        max-width: 300px !important;
+      }
        .register .primary-input{ 
         width: 300px;
        }

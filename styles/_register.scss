@@ -44,7 +44,7 @@
   align-items: center;
   padding-bottom: 46px;
   .register__btn {
-    
+    font-weight: 400;
     margin-top: 50px;
     margin-bottom: 21px;
     max-width: 309px;
@@ -119,4 +119,11 @@
   input[type='checkbox'] {
     margin-right: 16px;
   }
+}
+.register__terms input:focus {
+  outline: none !important; 
+}
+
+.register__terms label:focus {
+  outline: none !important;
 }

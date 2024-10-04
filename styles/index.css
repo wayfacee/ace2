@@ -1087,11 +1087,20 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  .login__create-account p {
+    max-width: 300px;
+  }
   .login {
     padding-top: 150px;
   }
   .register form {
     padding-top: 120px !important;
+  }
+  .register__terms {
+    max-width: 300px !important;
+  }
+  .register__terms .register__terms-checkbox {
+    gap: 5px !important;
   }
   .login .primary-input {
     width: 300px;
@@ -1113,6 +1122,9 @@ h6 {
 @media (max-width: 400px) {
   .login .primary-input {
     width: 300px;
+  }
+  .register__terms {
+    max-width: 300px !important;
   }
   .register .primary-input {
     width: 300px;
@@ -1173,6 +1185,7 @@ h6 {
   padding-bottom: 46px;
 }
 .register form .register__btn {
+  font-weight: 400;
   margin-top: 50px;
   margin-bottom: 21px;
   max-width: 309px;
@@ -1235,6 +1248,14 @@ h6 {
 }
 .register__terms-checkbox input[type=checkbox] {
   margin-right: 16px;
+}
+
+.register__terms input:focus {
+  outline: none !important;
+}
+
+.register__terms label:focus {
+  outline: none !important;
 }
 
 .delivery-payment__container {
