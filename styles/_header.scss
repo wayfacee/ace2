@@ -13,6 +13,7 @@
   position: absolute;
 }
 
+
 .header__logo {
   position: relative;
   display: inline-flex;
@@ -52,9 +53,10 @@
   }
 }
 .header {
-  position: sticky;
+  position: fixed;
   width: 100%;
   top: 0;
+  z-index: 100; 
   background: linear-gradient(
     180deg,
     rgba(231, 236, 234, 1) 0%,

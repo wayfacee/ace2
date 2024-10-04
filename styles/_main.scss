@@ -5,6 +5,7 @@
 }
 .main__main {
   margin: 0 auto;
+  margin-top: 40px;
 }
 .main__container {
   width: 95%;
@@ -86,11 +87,19 @@ cursor: pointer;
 }
 
 @media (max-width: 1024px) {
+  .main__main {
+    margin: 0 auto;
+    margin-top: 80px;
+  }
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (max-width: 768px) {
+  .main__main {
+    margin: 0 auto;
+    margin-top: 110px;
+  }
   .main__banner {
     display: none;
   }
