@@ -18,7 +18,13 @@
     color: inherit;
     text-decoration: underline;
   }
+  #cart-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
+
 .cart-item {
   display: flex;
   flex-direction: row;

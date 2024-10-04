@@ -502,255 +502,164 @@ if ($filter) {
         $filter.classList.remove('open'); // Close the filter
       }
     });
-    
-
-  let selectedColors = [];
-  let selectedSizes = [];
-  let selectedGender = null;
-  let selectedCategory = null;
-
-  function renderProducts(productsToRender) {
-    const productGrid = document.querySelector('.product-grid');
-    productGrid.innerHTML = productsToRender
-      .map(
-        (product) => `
-                  <div class="product-grid__item" data-name="${product.name}">
-            <img src="${product.image}" alt="${product.name}">
-            <img class="product-like-icon ${favoriteProducts.includes(product.name) ? 'selected' : ''
-          }" src="assets/img/header-like.svg" alt="Like">
-            <p>${product.name}</p>
-            <p class="product-price">${product.price}грн</p> 
-          </div>
-        `
-      )
-      .join('');
-
-    // Додаємо обробник кліку на кожну картку
-    document.querySelectorAll('.product-grid__item').forEach((item) => {
-      item.addEventListener('click', function () {
-        const productName = item.getAttribute('data-name');
-        window.location.href = `product.html?name=${encodeURIComponent(
-          productName
-        )}`;
-      });
-    });
-
-    // Додаємо обробник кліку на іконку серця
-    document.querySelectorAll('.product-like-icon').forEach((icon) => {
-      icon.addEventListener('click', function (event) {
-        event.stopPropagation();
-        toggleFavoriteProduct(icon);
-      });
-    });
-  }
-
-  function rgbToHex(rgb) {
-    const rgbValues = rgb.match(/\d+/g).map(Number);
-    return `#${rgbValues
-      .map((val) => val.toString(16).padStart(2, '0'))
-      .join('')}`;
-  }
-
-  function applyFilters() {
-    const filteredProducts = products.filter((product) => {
-      const categoryMatch =
-        !selectedCategory ||
-        selectedCategory === 'all' ||
-        product.category === selectedCategory;
-
-      const colorMatch =
-        !selectedColors.length || selectedColors.includes(product.color);
-
-      const sizeMatch =
-        !selectedSizes.length ||
-        selectedSizes.some((size) => product.sizes.includes(size));
-
-      const genderMatch = !selectedGender || product.gender === selectedGender;
-
-      return categoryMatch && colorMatch && sizeMatch && genderMatch;
-    });
-    let favoriteProducts =
-      JSON.parse(localStorage.getItem('favoriteProducts')) || [];
-
-    updateFavoriteCount();
-
-    renderProducts(filteredProducts);
-  }
-
-  function toggleSelection(array, value) {
-    const index = array.indexOf(value);
-    if (index === -1) {
-      array.push(value);
-    } else {
-      array.splice(index, 1);
-    }
-  }
-
-  function toggleFavoriteProduct(icon) {
-    const productItem = icon.closest('.product-grid__item');
-    const productName = productItem.getAttribute('data-name');
-
-    // Перевіряємо, чи вже товар у списку обраних
-    const isFavorite = favoriteProducts.includes(productName);
-
-    if (isFavorite) {
-      favoriteProducts = favoriteProducts.filter(
-        (item) => item !== productName
-      );
-      icon.classList.remove('selected');
-    } else {
-      favoriteProducts.push(productName);
-      icon.classList.add('selected');
-    }
-
-    localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
-
-    updateFavoriteCount();
-  }
-
-  document.querySelectorAll('.filter__gender-button').forEach((button) => {
-    button.addEventListener('click', function () {
-      document
-        .querySelectorAll('.filter__gender-button')
-        .forEach((el) => el.classList.remove('selected'));
-      button.classList.add('selected');
-      selectedGender = button.innerText.toLowerCase();
-      applyFilters();
-    });
-  });
-
-  document.querySelectorAll('.filter__color-button').forEach((button) => {
-    button.addEventListener('click', function () {
-      const color = rgbToHex(button.style.backgroundColor);
-      toggleSelection(selectedColors, color);
-      button.classList.toggle('selected');
-      applyFilters();
-    });
-  });
-
-  document.querySelectorAll('.filter__size-button').forEach((button) => {
-    button.addEventListener('click', function () {
-      const size = button.innerText;
-      toggleSelection(selectedSizes, size);
-      button.classList.toggle('selected');
-      applyFilters();
-    });
-  });
-
-  document.querySelectorAll('.filter__categories li').forEach((item) => {
-    item.addEventListener('click', function (event) {
-      event.preventDefault();
-      document
-        .querySelectorAll('.filter__categories li')
-        .forEach((el) => el.classList.remove('selected'));
-      item.classList.add('selected');
-      selectedCategory = item.innerText.toLowerCase();
-      applyFilters();
-    });
-  });
-
-  document.querySelectorAll('.menu__item').forEach((menuItem) => {
-    menuItem.addEventListener('click', function (event) {
-      event.preventDefault();
-      document
-        .querySelectorAll('.menu__item')
-        .forEach((el) => el.classList.remove('menu__link__active'));
-      menuItem.classList.add('menu__link__active');
-      selectedCategory =
-        menuItem.innerText.toLowerCase() === 'all'
-          ? null
-          : menuItem.innerText.toLowerCase();
-      applyFilters();
-    });
-  });
-
-  function clearFilters() {
-    document
-      .querySelectorAll(
-        '.filter__categories li, .filter__color-button, .filter__size-button, .filter__gender-button'
-      )
-      .forEach((item) => {
-        item.classList.remove('selected');
-      });
-    document
-      .querySelector('.filter__categories ul li:first-of-type')
-      .classList.add('selected');
-    selectedColors = [];
-    selectedSizes = [];
-    selectedGender = null;
-    selectedCategory = null;
-    renderProducts(products);
-    const productGridItems = document.querySelectorAll('.product-grid__item');
-    if (productGridItems.length > 0) {
-      productGridItems.forEach(item => {
-        item.style.zIndex = '-1';
-      });
-    }
-  }
-
-  document
-    .getElementById('filter-reset')
-    .addEventListener('click', clearFilters);
-
-  let favoriteProducts =
-    JSON.parse(localStorage.getItem('favoriteProducts')) || [];
-
-  updateFavoriteCount();
-
-  renderProducts(products);
-}
-if (
-  window.location.pathname.includes('saved-items.html') ||
-  window.location.pathname.includes('personal-account.html')
-) {
-  const favoriteProducts =
-    JSON.parse(localStorage.getItem('favoriteProducts')) || [];
-
-  const savedProductGrid = document.querySelector('.saved-items__container');
-  if (savedProductGrid) {
-    // Clear the existing content
-    savedProductGrid.innerHTML = '';
-
-    if (favoriteProducts.length === 0) {
-      // If no favorites, display the empty message
-      savedProductGrid.innerHTML = `
-        <div class="saved-items__items">
-          <h2>Your list is empty</h2>
-        </div>
-        <div class="saved-items__message">
-          <h2>Looking for your items?</h2>
-          <p>Sign in to pick up to where you left off or to start building your wishlist.</p>
-          <a class="secondary-btn" href="login.html">sign in</a>
-        </div>
-      `;
-    } else {
-      // Iterate through the favorite products and display them
-      favoriteProducts.forEach((productName) => {
-        const product = products.find(p => p.name === productName); // Assuming 'products' is your product list
-        if (product) {
-          savedProductGrid.innerHTML += `
-            <div class="saved-product-item">
-              <a href="product.html?name=${encodeURIComponent(product.name)}" class="saved-product-link">
-                <img src="${product.image}" alt="${product.name}">
-                <p>${product.name}</p>
-                <p class="product-price">${product.price} грн</p>
-              </a>
-              <button class="remove-favorite-btn" data-name="${product.name}">Remove</button>
+    let selectedColors = [];
+    let selectedSizes = [];
+    let selectedGender = null;
+    let selectedCategory = null;
+    let searchQuery = ''; // Додамо змінну для пошукового запиту
+  
+    function renderProducts(productsToRender) {
+      const productGrid = document.querySelector('.product-grid');
+      productGrid.innerHTML = productsToRender
+        .map(
+          (product) => `
+                    <div class="product-grid__item" data-name="${product.name}">
+              <img src="${product.image}" alt="${product.name}">
+              <img class="product-like-icon ${favoriteProducts.includes(product.name) ? 'selected' : ''}"
+                   src="assets/img/header-like.svg" alt="Like">
+              <p>${product.name}</p>
+              <p class="product-price">${product.price}грн</p> 
             </div>
-          `;
-        }
+          `
+        )
+        .join('');
+  
+      // Додаємо обробник кліку на кожну картку
+      document.querySelectorAll('.product-grid__item').forEach((item) => {
+        item.addEventListener('click', function () {
+          const productName = item.getAttribute('data-name');
+          window.location.href = `product.html?name=${encodeURIComponent(
+            productName
+          )}`;
+        });
       });
-
-      // Add event listeners to remove buttons
-      document.querySelectorAll('.remove-favorite-btn').forEach((button) => {
-        button.addEventListener('click', function () {
-          const productName = button.getAttribute('data-name');
-          removeFavoriteProduct(productName);
+  
+      // Додаємо обробник кліку на іконку серця
+      document.querySelectorAll('.product-like-icon').forEach((icon) => {
+        icon.addEventListener('click', function (event) {
+          event.stopPropagation();
+          toggleFavoriteProduct(icon);
         });
       });
     }
+  
+    function applyFilters() {
+      const filteredProducts = products.filter((product) => {
+        const categoryMatch =
+          !selectedCategory || selectedCategory === 'all' || product.category === selectedCategory;
+  
+        const colorMatch = !selectedColors.length || selectedColors.includes(product.color);
+  
+        const sizeMatch = !selectedSizes.length || selectedSizes.some((size) => product.sizes.includes(size));
+  
+        const genderMatch = !selectedGender || product.gender === selectedGender;
+  
+        const searchMatch = !searchQuery || product.name.toLowerCase().includes(searchQuery.toLowerCase());
+  
+        return categoryMatch && colorMatch && sizeMatch && genderMatch && searchMatch;
+      });
+  
+      let favoriteProducts = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+  
+      updateFavoriteCount();
+  
+      renderProducts(filteredProducts);
+    }
+  
+    // Пошук продукту по назві
+    document.getElementById('searchInput').addEventListener('input', function () {
+      searchQuery = this.value; // Оновлюємо пошуковий запит
+      applyFilters(); // Застосовуємо фільтри, включаючи пошук
+    });
+  
+    // Інші фільтри
+    document.querySelectorAll('.filter__gender-button').forEach((button) => {
+      button.addEventListener('click', function () {
+        document
+          .querySelectorAll('.filter__gender-button')
+          .forEach((el) => el.classList.remove('selected'));
+        button.classList.add('selected');
+        selectedGender = button.innerText.toLowerCase();
+        applyFilters();
+      });
+    });
+  
+    document.querySelectorAll('.filter__color-button').forEach((button) => {
+      button.addEventListener('click', function () {
+        const color = rgbToHex(button.style.backgroundColor);
+        toggleSelection(selectedColors, color);
+        button.classList.toggle('selected');
+        applyFilters();
+      });
+    });
+  
+    document.querySelectorAll('.filter__size-button').forEach((button) => {
+      button.addEventListener('click', function () {
+        const size = button.innerText;
+        toggleSelection(selectedSizes, size);
+        button.classList.toggle('selected');
+        applyFilters();
+      });
+    });
+  
+    document.querySelectorAll('.filter__categories li').forEach((item) => {
+      item.addEventListener('click', function (event) {
+        event.preventDefault();
+        document
+          .querySelectorAll('.filter__categories li')
+          .forEach((el) => el.classList.remove('selected'));
+        item.classList.add('selected');
+        selectedCategory = item.innerText.toLowerCase();
+        applyFilters();
+      });
+    });
+  
+    document.querySelectorAll('.menu__item').forEach((menuItem) => {
+      menuItem.addEventListener('click', function (event) {
+        event.preventDefault();
+        document
+          .querySelectorAll('.menu__item')
+          .forEach((el) => el.classList.remove('menu__link__active'));
+        menuItem.classList.add('menu__link__active');
+        selectedCategory =
+          menuItem.innerText.toLowerCase() === 'all'
+            ? null
+            : menuItem.innerText.toLowerCase();
+        applyFilters();
+      });
+    });
+  
+    function clearFilters() {
+      document
+        .querySelectorAll(
+          '.filter__categories li, .filter__color-button, .filter__size-button, .filter__gender-button'
+        )
+        .forEach((item) => {
+          item.classList.remove('selected');
+        });
+      document
+        .querySelector('.filter__categories ul li:first-of-type')
+        .classList.add('selected');
+      selectedColors = [];
+      selectedSizes = [];
+      selectedGender = null;
+      selectedCategory = null;
+      searchQuery = ''; // Очищуємо пошуковий запит
+      document.getElementById('searchInput').value = ''; // Очищуємо поле пошуку
+      renderProducts(products);
+    }
+  
+    document
+      .getElementById('filter-reset')
+      .addEventListener('click', clearFilters);
+  
+    let favoriteProducts = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+  
+    updateFavoriteCount();
+  
+    renderProducts(products);
+
   }
-}
 
 function removeFavoriteProduct(productName) {
   let favoriteProducts =
@@ -1219,186 +1128,184 @@ document.addEventListener('DOMContentLoaded', function () {
   const isProductPage = window.location.pathname.includes('product.html');
 
   if (isProductPage) {
-    // Product data
-    const urlParams = new URLSearchParams(window.location.search);
-    const productName = urlParams.get('name') || 'Jacket';
-    const productColor = urlParams.get('color') || 'black';
-    const productSize = urlParams.get('size') || '';
-
-    function rearrangeElementsForMobile() {
-      const mainContentContainer = document.querySelector('.product__main-content');
-      const infoContainer = document.querySelector('.product__info');
-      const recommendationsContainer = document.querySelector('.product__recommendations');
-
-      if (window.innerWidth < 1080) {
-          // Move the infoContainer after mainContentContainer for mobile view
-          if (mainContentContainer && infoContainer) {
-              if (infoContainer.parentNode !== mainContentContainer.parentNode ||
-                  infoContainer.nextElementSibling !== mainContentContainer) {
-                  mainContentContainer.parentNode.insertBefore(infoContainer, mainContentContainer.nextSibling);
+      // Product data
+      const urlParams = new URLSearchParams(window.location.search);
+      const productName = urlParams.get('name') || 'Jacket';
+      let productColor = urlParams.get('color') || ''; // Встановлюємо порожнє значення на початку
+      const productSize = urlParams.get('size') || '';
+  
+      function rearrangeElementsForMobile() {
+          const mainContentContainer = document.querySelector('.product__main-content');
+          const infoContainer = document.querySelector('.product__info');
+          const recommendationsContainer = document.querySelector('.product__recommendations');
+  
+          if (window.innerWidth < 1080) {
+              if (mainContentContainer && infoContainer) {
+                  if (infoContainer.parentNode !== mainContentContainer.parentNode ||
+                      infoContainer.nextElementSibling !== mainContentContainer) {
+                      mainContentContainer.parentNode.insertBefore(infoContainer, mainContentContainer.nextSibling);
+                  }
               }
-          }
-      } else {
-          // Move the infoContainer back to its original place in recommendationsContainer for larger screens
-          if (infoContainer && recommendationsContainer) {
-              if (infoContainer.parentNode !== recommendationsContainer ||
-                  infoContainer.nextElementSibling !== recommendationsContainer.firstChild) {
-                  recommendationsContainer.insertBefore(infoContainer, recommendationsContainer.firstChild);
+          } else {
+              if (infoContainer && recommendationsContainer) {
+                  if (infoContainer.parentNode !== recommendationsContainer ||
+                      infoContainer.nextElementSibling !== recommendationsContainer.firstChild) {
+                      recommendationsContainer.insertBefore(infoContainer, recommendationsContainer.firstChild);
+                  }
               }
           }
       }
+  
+      rearrangeElementsForMobile();
+  
+      const product = products.find((p) => p.name === productName);
+  
+      if (product) {
+          const mainContentContainer = document.querySelector('.product__main-content');
+  
+          if (mainContentContainer) {
+              mainContentContainer.innerHTML = ''; // Очищаємо контейнер перед додаванням нових елементів
+  
+              // Додаємо головне зображення продукту
+              const mainImageElement = document.createElement('img');
+              mainImageElement.src = product.colors[productColor] || product.image;
+              mainImageElement.alt = `${product.name} - ${productColor}`;
+              mainImageElement.classList.add('product__main-image');
+              mainContentContainer.appendChild(mainImageElement);
+  
+              // Додаємо додаткові зображення з масиву "images"
+              product.images.forEach((imageSrc) => {
+                  const additionalImageElement = document.createElement('img');
+                  additionalImageElement.src = imageSrc;
+                  additionalImageElement.alt = `${product.name} - additional image`;
+                  additionalImageElement.classList.add('product__additional-image');
+                  mainContentContainer.appendChild(additionalImageElement);
+              });
+          } else {
+              console.error('Main content container not found');
+          }
+  
+          // Встановлюємо назву продукту
+          document.querySelector('.product__name').textContent = product.name.toUpperCase();
+  
+          // Встановлюємо ціну продукту
+          const priceContainer = document.querySelector('.product__price');
+          if (priceContainer) {
+              priceContainer.textContent = `${product.price} UAH`;
+          } else {
+              console.error('Price container not found');
+          }
+  
+          // Виводимо доступні кольори
+          const colorContainer = document.querySelector('.product__color-options');
+          if (colorContainer) {
+              colorContainer.innerHTML = '';
+              let defaultColorSet = false; // Перевіряємо, чи встановлено початковий колір
+  
+              Object.keys(product.colors).forEach((color, index) => {
+                  const colorItem = document.createElement('div');
+                  colorItem.classList.add('product__color-item');
+                  colorItem.innerHTML = `
+                      <img src="${product.colors[color]}" alt="${color}" class="product__color-image" />
+                      <p class="product__color-name">${color}</p>
+                  `;
+                  colorItem.addEventListener('click', () => changeColor(color));
+  
+                  if (!productColor && !defaultColorSet) {
+                      // Встановлюємо перший колір як активний за замовчуванням
+                      changeColor(color);
+                      defaultColorSet = true;
+                  }
+  
+                  if (color === productColor) {
+                      colorItem.classList.add('blured'); // Додаємо клас розмиття для обраного кольору
+                  }
+  
+                  colorContainer.appendChild(colorItem);
+              });
+          } else {
+              console.error('Color container not found');
+          }
+  
+          // Виводимо доступні розміри
+          const sizeContainer = document.querySelector('.product__size-selection');
+          if (sizeContainer) {
+              sizeContainer.innerHTML = '<p class="product__label">sizes</p>';
+              product.sizes.forEach((size) => {
+                  const sizeButton = document.createElement('button');
+                  sizeButton.classList.add('product__size-btn');
+                  sizeButton.textContent = size;
+                  sizeButton.addEventListener('click', function () {
+                      selectSize(sizeButton);
+                  });
+  
+                  if (size === productSize) {
+                      sizeButton.classList.add('product__size-btn--selected');
+                  }
+  
+                  sizeContainer.appendChild(sizeButton);
+              });
+          } else {
+              console.error('Size container not found');
+          }
+  
+          // Додаємо назву продукту та ціну в заголовок для мобільних користувачів
+          const headerName = document.querySelector('.header__product-name');
+          const headerPrice = document.querySelector('.header__product-price');
+  
+          if (window.innerWidth < 768) { // Перевіряємо, чи користувач на мобільному пристрої
+              if (headerName) {
+                  headerName.textContent = product.name.toUpperCase();
+              }
+              if (headerPrice) {
+                  headerPrice.textContent = `${product.price} UAH`;
+              }
+          }
+  
+      } else {
+          console.error('Product not found');
+      }
+  
+      // Функція для зміни кольору і оновлення URL
+      function changeColor(color) {
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('color', color);
+          window.location.search = urlParams.toString();
+  
+          // Оновлюємо клас для обраного кольору
+          const colorItems = document.querySelectorAll('.product__color-item');
+          colorItems.forEach((item) => {
+              const colorName = item.querySelector('.product__color-name').textContent;
+              if (colorName === color) {
+                  item.classList.add('blured'); // Додаємо розмиття обраному кольору
+              } else {
+                  item.classList.remove('blured'); // Видаляємо розмиття для всіх інших кольорів
+              }
+          });
+      }
+  
+      // Функція для вибору розміру
+      function selectSize(button) {
+          const sizeButtons = document.querySelectorAll('.product__size-btn');
+          sizeButtons.forEach((btn) =>
+              btn.classList.remove('product__size-btn--selected')
+          );
+  
+          button.classList.add('product__size-btn--selected');
+  
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('size', button.textContent);
+          window.history.replaceState(null, '', '?' + urlParams.toString());
+  
+          const addToBagButton = document.querySelector('.product__button--add-to-bag');
+          if (addToBagButton) {
+              addToBagButton.disabled = false;
+              addToBagButton.textContent = 'add to bag';
+          }
+      }
+  
+      window.addEventListener('resize', rearrangeElementsForMobile);
   }
-
-  // Initial rearrangement
-  rearrangeElementsForMobile();
-    // Find the product by name
-    const product = products.find((p) => p.name === productName);
-
-    if (product) {
-        const mainContentContainer = document.querySelector('.product__main-content');
-
-        if (mainContentContainer) {
-            mainContentContainer.innerHTML = ''; // Clear container before adding new elements
-
-            // Add main product image
-            const mainImageElement = document.createElement('img');
-            mainImageElement.src = product.colors[productColor] || product.image;
-            mainImageElement.alt = `${product.name} - ${productColor}`;
-            mainImageElement.classList.add('product__main-image');
-            mainContentContainer.appendChild(mainImageElement);
-
-            // Add additional images from the "images" array
-            product.images.forEach((imageSrc) => {
-                const additionalImageElement = document.createElement('img');
-                additionalImageElement.src = imageSrc;
-                additionalImageElement.alt = `${product.name} - additional image`;
-                additionalImageElement.classList.add('product__additional-image');
-                mainContentContainer.appendChild(additionalImageElement);
-            });
-        } else {
-            console.error('Main content container not found');
-        }
-
-        // Set product name
-        document.querySelector('.product__name').textContent = product.name.toUpperCase();
-
-        // Set product price
-        const priceContainer = document.querySelector('.product__price');
-        if (priceContainer) {
-            priceContainer.textContent = `${product.price} UAH`;
-        } else {
-            console.error('Price container not found');
-        }
-
-        // Display available colors
-        const colorContainer = document.querySelector('.product__color-options');
-        if (colorContainer) {
-            colorContainer.innerHTML = '';
-            Object.keys(product.colors).forEach((color) => {
-                const colorItem = document.createElement('div');
-                colorItem.classList.add('product__color-item');
-                colorItem.innerHTML = `
-                    <img src="${product.colors[color]}" alt="${color}" class="product__color-image" />
-                    <p class="product__color-name">${color}</p>
-                `;
-                colorItem.addEventListener('click', () => changeColor(color));
-                colorContainer.appendChild(colorItem);
-            });
-        } else {
-            console.error('Color container not found');
-        }
-
-        // Display available sizes
-        const sizeContainer = document.querySelector('.product__size-selection');
-        if (sizeContainer) {
-            sizeContainer.innerHTML = '<p class="product__label">sizes</p>';
-            product.sizes.forEach((size) => {
-                const sizeButton = document.createElement('button');
-                sizeButton.classList.add('product__size-btn');
-                sizeButton.textContent = size;
-                sizeButton.addEventListener('click', function () {
-                    selectSize(sizeButton);
-                });
-
-                if (size === productSize) {
-                    sizeButton.classList.add('product__size-btn--selected');
-                }
-
-                sizeContainer.appendChild(sizeButton);
-            });
-        } else {
-            console.error('Size container not found');
-        }
-
-        // Add product name and price to the header for mobile users
-        const headerName = document.querySelector('.header__product-name');
-        const headerPrice = document.querySelector('.header__product-price');
-
-        if (window.innerWidth < 768) { // Check if the user is on a mobile device
-            if (headerName) {
-                headerName.textContent = product.name.toUpperCase();
-            }
-            if (headerPrice) {
-                headerPrice.textContent = `${product.price} UAH`;
-            }
-        }
-
-    } else {
-        console.error('Product not found');
-    }
-
-    // Function to change color and update URL
-    function changeColor(color) {
-        const urlParams = new URLSearchParams(window.location.search);
-        urlParams.set('color', color);
-        window.location.search = urlParams.toString();
-    }
-
-    // Function to select size
-    function selectSize(button) {
-        const sizeButtons = document.querySelectorAll('.product__size-btn');
-        sizeButtons.forEach((btn) =>
-            btn.classList.remove('product__size-btn--selected')
-        );
-
-        button.classList.add('product__size-btn--selected');
-
-        // Add selected size to URL
-        const urlParams = new URLSearchParams(window.location.search);
-        urlParams.set('size', button.textContent);
-        window.history.replaceState(null, '', '?' + urlParams.toString());
-
-        // Activate "add to cart" button
-        const addToBagButton = document.querySelector('.product__button--add-to-bag');
-        if (addToBagButton) {
-            addToBagButton.disabled = false;
-            addToBagButton.textContent = 'add to bag';
-        }
-    }
-
-    // Add product to cart (local storage)
-    const addToCartButton = document.getElementById('add-to-cart');
-    if (addToCartButton) {
-        addToCartButton.addEventListener('click', function () {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const existingItem = cart.find(
-                (item) => item.name === product.name && item.color === productColor
-            );
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1, color: productColor });
-            }
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-            window.location.href = 'cart.html';
-        });
-    } else {
-        console.error('Add to cart button not found');
-    }
-    window.addEventListener('resize', rearrangeElementsForMobile);
-}
   if (isCartPage) {
     const cartContainer = document.getElementById('cart-container');
     const totalElement = document.getElementById('total-amount');
@@ -1536,6 +1443,50 @@ document.addEventListener('DOMContentLoaded', function () {
     // Виклик функції для початкового відображення кошика
     renderCart();
   }
+});
+
+const searchBtn = document.getElementById('searchBtn');
+const searchInput = document.getElementById('searchInput');
+
+// Показати або сховати поле пошуку при натисканні на кнопку
+searchBtn.addEventListener('click', function () {
+  if (searchInput.style.display === 'none') {
+      searchInput.style.display = 'block';
+      searchInput.focus();
+      const productGridItems = document.querySelectorAll('.product-grid__item');
+      if (productGridItems.length > 0) {
+        productGridItems.forEach(item => {
+          item.style.zIndex = '-1';
+        });
+      }
+  } else {
+      searchInput.style.display = 'none';
+      const productGridItems = document.querySelectorAll('.product-grid__item');
+      if (productGridItems.length > 0) {
+        productGridItems.forEach(item => {
+          item.style.zIndex = '';
+        });
+      }
+  }
+});
+
+
+// Закриття поля пошуку при натисканні на будь-яке місце поза полем або кнопкою
+document.addEventListener('click', function (event) {
+    if (event.target !== searchInput && event.target !== searchBtn) {
+        searchInput.style.display = 'none';
+        const productGridItems = document.querySelectorAll('.product-grid__item');
+        if (productGridItems.length > 0) {
+          productGridItems.forEach(item => {
+            item.style.zIndex = '';
+          });
+        }
+    }
+});
+
+// Запобігаємо закриттю інпуту при кліку всередині нього
+searchInput.addEventListener('click', function (event) {
+    event.stopPropagation();
 });
 
 const countries = [

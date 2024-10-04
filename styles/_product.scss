@@ -49,6 +49,9 @@
     margin: 5px 0px;
   }
 }
+.product__color-item.blured{
+filter: blur(2px);
+}
 .product__color-item img {
   max-width: 117px;
   max-height: 177px;
