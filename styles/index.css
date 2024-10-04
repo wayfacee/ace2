@@ -1629,6 +1629,7 @@ h6 {
     align-items: baseline;
   }
   .product__sidebar {
+    margin-top: 50px;
     order: 3;
     padding-left: 23px;
     padding-right: 23px;

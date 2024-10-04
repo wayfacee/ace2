@@ -113,7 +113,6 @@ $emailInput.addEventListener('blur', function () {
     $emailInput.placeholder = 'e-mail adress';
   }
 });
-
 const links = document.querySelectorAll('.menu__link');
 const modals = {
   Career: document.getElementById('modal-career'),
@@ -121,40 +120,63 @@ const modals = {
 };
 const closeButtons = document.querySelectorAll('.modal__close');
 
-links.forEach((link) => {
-  link.addEventListener('click', function (event) {
-    const linkText = this.textContent.trim();
+function toggleModal(linkText) {
+  if (modals[linkText]) {
+    modals[linkText].style.display = 'block';
+  }
+}
 
+function closeModals() {
+  Object.keys(modals).forEach((key) => {
+    modals[key].style.display = 'none';
+  });
+}
+
+links.forEach((link) => {
+  function handleClick(event) {
+    const linkText = this.textContent.trim();
+    
     if (this.classList.contains('modal-trigger')) {
       event.preventDefault();
-
       links.forEach((l) => l.classList.remove('menu__link__active'));
-
       this.classList.add('menu__link__active');
-
-      if (modals[linkText]) {
-        modals[linkText].style.display = 'block';
-      }
+      closeModals();
+      toggleModal(linkText);
     } else {
       links.forEach((l) => l.classList.remove('menu__link__active'));
       this.classList.add('menu__link__active');
     }
-  });
+  }
+
+
+  link.addEventListener('click', handleClick);
+  link.addEventListener('touchstart', handleClick);
 });
 
 closeButtons.forEach((button) => {
-  button.onclick = function () {
+  function closeModal() {
     const modalId = this.getAttribute('data-modal');
     links.forEach((l) => l.classList.remove('menu__link__active'));
     document.getElementById(modalId).style.display = 'none';
-  };
+  }
+
+  button.addEventListener('click', closeModal);
+  button.addEventListener('touchstart', closeModal);
 });
 
-window.onclick = function (event) {
+window.addEventListener('click', function (event) {
   if (event.target.classList.contains('modal')) {
     event.target.style.display = 'none';
+    links.forEach((l) => l.classList.remove('menu__link__active'));
   }
-};
+});
+
+window.addEventListener('touchstart', function (event) {
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
+    links.forEach((l) => l.classList.remove('menu__link__active'));
+  }
+});
 const products = [
   {
     name: 'JACKET SHIELD 1.0',
