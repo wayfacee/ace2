@@ -1237,6 +1237,7 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 140px;
   margin: 0 auto;
   font-size: 12px;
 }
