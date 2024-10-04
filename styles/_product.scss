@@ -129,8 +129,6 @@ filter: blur(2px);
   .product {
     display: flex;
     flex-direction: column;
-    padding-left: 23px;
-    padding-right: 23px;
     padding-bottom: 40px;
   }
   .product__sidebar,
@@ -146,6 +144,8 @@ filter: blur(2px);
   }
   .product__info{
     margin-top: 20px;
+    padding-left: 23px;
+    padding-right: 23px;
     order: 2;
     margin-bottom: 20px;
     .product__description{
@@ -156,9 +156,13 @@ filter: blur(2px);
 
   .product__sidebar {
     order: 3;
+    padding-left: 23px;
+    padding-right: 23px;
   }
 
   .product__recommendations {
+    padding-left: 23px;
+    padding-right: 23px;
     order: 4;
   }
   .product__selections .product__label {
@@ -192,7 +196,6 @@ filter: blur(2px);
     scroll-snap-type: x mandatory;
     margin: 0 auto;
     gap: 10px;
-    padding: 20px;
     max-width: 600px;
     img{
       object-fit: cover;
@@ -219,8 +222,6 @@ filter: blur(2px);
     scroll-snap-type: x mandatory;
     margin: 0 auto;
     gap: 10px;
-    padding: 20px;
-    max-width: 300px;
     img{
       object-fit: cover;
       width: 600px ;
@@ -238,8 +239,6 @@ filter: blur(2px);
     scroll-snap-type: x mandatory;
     margin: 0 auto;
     gap: 10px;
-    padding: 20px;
-    max-width: 200px;
     img{
       object-fit: cover;
       width: 600px ;
