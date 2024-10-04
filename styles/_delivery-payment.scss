@@ -19,3 +19,33 @@
   }
   max-width: 632px;
 }
+@media (max-width: 768px) {
+  .delivery-payment__container {
+    max-width: 600px;
+    width: 90%;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .delivery-payment__container  {
+    max-width: 500px;
+    width: 90%;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .delivery-payment__container  {
+    max-width: 400px;
+    width: 90%;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .delivery-payment__container {
+    max-width: 300px;
+    width: 90%;
+  }
+}
