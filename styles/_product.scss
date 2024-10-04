@@ -121,12 +121,18 @@ filter: blur(2px);
   }
 }
 .product__info {
+  .product__name{
+    align-items: center;
+  }
   .product__description {
     margin-top: 45px;
     margin-bottom: 30px;
   }
   .product__link {
     color: inherit;
+  }
+  .product-like-icon{
+    position: static;
   }
 }
 .menu.open + .product__main-content{

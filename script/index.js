@@ -1196,185 +1196,253 @@ document.addEventListener('DOMContentLoaded', function () {
   const isProductPage = window.location.pathname.includes('product.html');
 
   if (isProductPage) {
-      // Product data
-      const urlParams = new URLSearchParams(window.location.search);
-      const productName = urlParams.get('name') || 'Jacket';
-      let productColor = urlParams.get('color') || ''; // Встановлюємо порожнє значення на початку
-      const productSize = urlParams.get('size') || '';
-  
-      function rearrangeElementsForMobile() {
-          const mainContentContainer = document.querySelector('.product__main-content');
-          const infoContainer = document.querySelector('.product__info');
-          const recommendationsContainer = document.querySelector('.product__recommendations');
-  
-          if (window.innerWidth < 1080) {
-              if (mainContentContainer && infoContainer) {
-                  if (infoContainer.parentNode !== mainContentContainer.parentNode ||
-                      infoContainer.nextElementSibling !== mainContentContainer) {
-                      mainContentContainer.parentNode.insertBefore(infoContainer, mainContentContainer.nextSibling);
-                  }
-              }
-          } else {
-              if (infoContainer && recommendationsContainer) {
-                  if (infoContainer.parentNode !== recommendationsContainer ||
-                      infoContainer.nextElementSibling !== recommendationsContainer.firstChild) {
-                      recommendationsContainer.insertBefore(infoContainer, recommendationsContainer.firstChild);
-                  }
-              }
-          }
-      }
-  
-      rearrangeElementsForMobile();
-  
-      const product = products.find((p) => p.name === productName);
-  
-      if (product) {
-          const mainContentContainer = document.querySelector('.product__main-content');
-  
-          if (mainContentContainer) {
-              mainContentContainer.innerHTML = ''; // Очищаємо контейнер перед додаванням нових елементів
-  
-              // Додаємо головне зображення продукту
-              const mainImageElement = document.createElement('img');
-              mainImageElement.src = product.colors[productColor] || product.image;
-              mainImageElement.alt = `${product.name} - ${productColor}`;
-              mainImageElement.classList.add('product__main-image');
-              mainContentContainer.appendChild(mainImageElement);
-  
-              // Додаємо додаткові зображення з масиву "images"
-              product.images.forEach((imageSrc) => {
-                  const additionalImageElement = document.createElement('img');
-                  additionalImageElement.src = imageSrc;
-                  additionalImageElement.alt = `${product.name} - additional image`;
-                  additionalImageElement.classList.add('product__additional-image');
-                  mainContentContainer.appendChild(additionalImageElement);
-              });
-          } else {
-              console.error('Main content container not found');
-          }
-  
-          // Встановлюємо назву продукту
-          document.querySelector('.product__name').textContent = product.name.toUpperCase();
-  
-          // Встановлюємо ціну продукту
-          const priceContainer = document.querySelector('.product__price');
-          if (priceContainer) {
-              priceContainer.textContent = `${product.price} UAH`;
-          } else {
-              console.error('Price container not found');
-          }
-  
-          // Виводимо доступні кольори
-          const colorContainer = document.querySelector('.product__color-options');
-          if (colorContainer) {
-              colorContainer.innerHTML = '';
-              let defaultColorSet = false; // Перевіряємо, чи встановлено початковий колір
-  
-              Object.keys(product.colors).forEach((color, index) => {
-                  const colorItem = document.createElement('div');
-                  colorItem.classList.add('product__color-item');
-                  colorItem.innerHTML = `
-                      <img src="${product.colors[color]}" alt="${color}" class="product__color-image" />
-                      <p class="product__color-name">${color}</p>
-                  `;
-                  colorItem.addEventListener('click', () => changeColor(color));
-  
-                  if (!productColor && !defaultColorSet) {
-                      // Встановлюємо перший колір як активний за замовчуванням
-                      changeColor(color);
-                      defaultColorSet = true;
-                  }
-  
-                  if (color === productColor) {
-                      colorItem.classList.add('blured'); // Додаємо клас розмиття для обраного кольору
-                  }
-  
-                  colorContainer.appendChild(colorItem);
-              });
-          } else {
-              console.error('Color container not found');
-          }
-  
-          // Виводимо доступні розміри
-          const sizeContainer = document.querySelector('.product__size-btns'); // Зміни на .product__size-btns
-if (sizeContainer) {
-    sizeContainer.innerHTML = ''; // Очищаємо вміст перед додаванням кнопок
-    product.sizes.forEach((size) => {
-        const sizeButton = document.createElement('button');
-        sizeButton.classList.add('product__size-btn');
-        sizeButton.textContent = size;
-        sizeButton.setAttribute('data-size', size); // Додаємо атрибут data-size
-        sizeButton.addEventListener('click', function () {
-            selectSize(sizeButton);
-        });
+    // Product data
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('name') || 'Jacket';
+    let productColor = urlParams.get('color') || ''; // Встановлюємо порожнє значення на початку
+    const productSize = urlParams.get('size') || '';
 
-        if (size === productSize) {
-            sizeButton.classList.add('product__size-btn--selected');
+    function rearrangeElementsForMobile() {
+        const mainContentContainer = document.querySelector('.product__main-content');
+        const infoContainer = document.querySelector('.product__info');
+        const recommendationsContainer = document.querySelector('.product__recommendations');
+
+        if (window.innerWidth < 1080) {
+            if (mainContentContainer && infoContainer) {
+                if (infoContainer.parentNode !== mainContentContainer.parentNode ||
+                    infoContainer.nextElementSibling !== mainContentContainer) {
+                    mainContentContainer.parentNode.insertBefore(infoContainer, mainContentContainer.nextSibling);
+                }
+            }
+        } else {
+            if (infoContainer && recommendationsContainer) {
+                if (infoContainer.parentNode !== recommendationsContainer ||
+                    infoContainer.nextElementSibling !== recommendationsContainer.firstChild) {
+                    recommendationsContainer.insertBefore(infoContainer, recommendationsContainer.firstChild);
+                }
+            }
+        }
+    }
+
+    rearrangeElementsForMobile();
+
+    const product = products.find((p) => p.name === productName);
+
+    if (product) {
+        const mainContentContainer = document.querySelector('.product__main-content');
+
+        if (mainContentContainer) {
+            mainContentContainer.innerHTML = ''; // Очищаємо контейнер перед додаванням нових елементів
+
+            // Додаємо головне зображення продукту
+            const mainImageElement = document.createElement('img');
+            mainImageElement.src = product.colors[productColor] || product.image;
+            mainImageElement.alt = `${product.name} - ${productColor}`;
+            mainImageElement.classList.add('product__main-image');
+            mainContentContainer.appendChild(mainImageElement);
+
+            // Додаємо додаткові зображення з масиву "images"
+            product.images.forEach((imageSrc) => {
+                const additionalImageElement = document.createElement('img');
+                additionalImageElement.src = imageSrc;
+                additionalImageElement.alt = `${product.name} - additional image`;
+                additionalImageElement.classList.add('product__additional-image');
+                mainContentContainer.appendChild(additionalImageElement);
+            });
+        } else {
+            console.error('Main content container not found');
         }
 
-        sizeContainer.appendChild(sizeButton); // Додаємо кнопки в .product__size-btns
-    });
-} else {
-    console.error('Size container not found');
-}
-  
-          // Додаємо назву продукту та ціну в заголовок для мобільних користувачів
-          const headerName = document.querySelector('.header__product-name');
-          const headerPrice = document.querySelector('.header__product-price');
-  
-          if (window.innerWidth < 768) { // Перевіряємо, чи користувач на мобільному пристрої
-              if (headerName) {
-                  headerName.textContent = product.name.toUpperCase();
-              }
-              if (headerPrice) {
-                  headerPrice.textContent = `${product.price} UAH`;
-              }
-          }
-  
-      } else {
-          console.error('Product not found');
+        // Встановлюємо назву продукту разом із сердечком
+        const productNameContainer = document.querySelector('.product__name');
+        if (productNameContainer) {
+            productNameContainer.innerHTML = `
+                <span class="product__name-text">${product.name.toUpperCase()}</span>
+                <img class="product-like-icon" src="assets/img/header-like.svg" alt="Like">
+            `;
+            productNameContainer.style.display = 'flex';
+            productNameContainer.style.justifyContent = 'space-between';
+
+            // Додаємо обробник подій для сердечка
+            const likeIcon = productNameContainer.querySelector('.product-like-icon');
+            likeIcon.addEventListener('click', function () {
+                toggleFavoriteProduct(likeIcon);
+            });
+
+            // Перевіряємо, чи є продукт в обраних
+            let favoriteProducts = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+            const isFavorite = favoriteProducts.includes(product.name);
+            if (isFavorite) {
+                likeIcon.classList.add('selected');
+            }
+        }
+
+        // Встановлюємо ціну продукту
+        const priceContainer = document.querySelector('.product__price');
+        if (priceContainer) {
+            priceContainer.textContent = `${product.price} UAH`;
+        } else {
+            console.error('Price container not found');
+        }
+
+        // Виводимо доступні кольори
+        const colorContainer = document.querySelector('.product__color-options');
+        if (colorContainer) {
+            colorContainer.innerHTML = '';
+            let defaultColorSet = false; // Перевіряємо, чи встановлено початковий колір
+
+            Object.keys(product.colors).forEach((color, index) => {
+                const colorItem = document.createElement('div');
+                colorItem.classList.add('product__color-item');
+                colorItem.innerHTML = `
+                    <img src="${product.colors[color]}" alt="${color}" class="product__color-image" />
+                    <p class="product__color-name">${color}</p>
+                `;
+                colorItem.addEventListener('click', () => changeColor(color));
+
+                if (!productColor && !defaultColorSet) {
+                    // Встановлюємо перший колір як активний за замовчуванням
+                    changeColor(color);
+                    defaultColorSet = true;
+                }
+
+                if (color === productColor) {
+                    colorItem.classList.add('blured'); // Додаємо клас розмиття для обраного кольору
+                }
+
+                colorContainer.appendChild(colorItem);
+            });
+        } else {
+            console.error('Color container not found');
+        }
+
+        // Виводимо доступні розміри
+        const sizeContainer = document.querySelector('.product__size-btns');
+        if (sizeContainer) {
+            sizeContainer.innerHTML = ''; // Очищаємо вміст перед додаванням кнопок
+            product.sizes.forEach((size) => {
+                const sizeButton = document.createElement('button');
+                sizeButton.classList.add('product__size-btn');
+                sizeButton.textContent = size;
+                sizeButton.setAttribute('data-size', size); // Додаємо атрибут data-size
+                sizeButton.addEventListener('click', function () {
+                    selectSize(sizeButton);
+                });
+
+                if (size === productSize) {
+                    sizeButton.classList.add('product__size-btn--selected');
+                }
+
+                sizeContainer.appendChild(sizeButton); // Додаємо кнопки в .product__size-btns
+            });
+        } else {
+            console.error('Size container not found');
+        }
+
+        // Додаємо назву продукту та ціну в заголовок для мобільних користувачів
+        const headerName = document.querySelector('.header__product-name');
+        const headerPrice = document.querySelector('.header__product-price');
+
+        if (window.innerWidth < 768) { // Перевіряємо, чи користувач на мобільному пристрої
+            if (headerName) {
+                headerName.textContent = product.name.toUpperCase();
+            }
+            if (headerPrice) {
+                headerPrice.textContent = `${product.price} UAH`;
+            }
+        }
+
+    } else {
+        console.error('Product not found');
+    }
+
+    // Функція для зміни кольору і оновлення URL
+    function changeColor(color) {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('color', color);
+        window.location.search = urlParams.toString();
+
+        // Оновлюємо клас для обраного кольору
+        const colorItems = document.querySelectorAll('.product__color-item');
+        colorItems.forEach((item) => {
+            const colorName = item.querySelector('.product__color-name').textContent;
+            if (colorName === color) {
+                item.classList.add('blured'); // Додаємо розмиття обраному кольору
+            } else {
+                item.classList.remove('blured'); // Видаляємо розмиття для всіх інших кольорів
+            }
+        });
+    }
+
+    // Функція для вибору розміру
+    function selectSize(button) {
+        const sizeButtons = document.querySelectorAll('.product__size-btn');
+        sizeButtons.forEach((btn) =>
+            btn.classList.remove('product__size-btn--selected')
+        );
+
+        button.classList.add('product__size-btn--selected');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('size', button.textContent);
+        window.history.replaceState(null, '', '?' + urlParams.toString());
+
+        const addToBagButton = document.querySelector('.product__button--add-to-bag');
+        if (addToBagButton) {
+            addToBagButton.disabled = false;
+            addToBagButton.textContent = 'add to bag';
+        }
+    }
+
+    // Функція для роботи із обраним (сердечко)
+    function toggleFavoriteProduct(icon) {
+        const productName = document.querySelector('.product__name-text').textContent.toUpperCase();
+        let favoriteProducts = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
+
+        // Перевіряємо, чи вже товар в обраних
+        const isFavorite = favoriteProducts.includes(productName);
+
+        if (isFavorite) {
+            // Видаляємо продукт з обраних
+            favoriteProducts = favoriteProducts.filter((item) => item !== productName);
+            icon.classList.remove('selected');
+        } else {
+            // Додаємо продукт в обрані
+            favoriteProducts.push(productName);
+            icon.classList.add('selected');
+        }
+
+        // Оновлюємо список в localStorage
+        localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
+        updateFavoriteCount();
+    }
+
+    // Оновлення кількості обраних елементів
+    function updateFavoriteCount() {
+      const favoriteBtn = document.querySelector('.favorite-btn');
+      
+      // Якщо елемент не знайдений, виходимо з функції
+      if (!favoriteBtn) {
+          console.error('Favorite button not found');
+          return;
       }
   
-      // Функція для зміни кольору і оновлення URL
-      function changeColor(color) {
-          const urlParams = new URLSearchParams(window.location.search);
-          urlParams.set('color', color);
-          window.location.search = urlParams.toString();
+      let favoriteProducts = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
   
-          // Оновлюємо клас для обраного кольору
-          const colorItems = document.querySelectorAll('.product__color-item');
-          colorItems.forEach((item) => {
-              const colorName = item.querySelector('.product__color-name').textContent;
-              if (colorName === color) {
-                  item.classList.add('blured'); // Додаємо розмиття обраному кольору
-              } else {
-                  item.classList.remove('blured'); // Видаляємо розмиття для всіх інших кольорів
-              }
-          });
+      // Якщо у кнопки немає span з класом favorite-count, створюємо його
+      let favoriteCountElement = favoriteBtn.querySelector('.favorite-count');
+      if (!favoriteCountElement) {
+          favoriteCountElement = document.createElement('span');
+          favoriteCountElement.classList.add('favorite-count');
+          favoriteBtn.appendChild(favoriteCountElement); // Додаємо span в кнопку
       }
   
-      // Функція для вибору розміру
-      function selectSize(button) {
-          const sizeButtons = document.querySelectorAll('.product__size-btn');
-          sizeButtons.forEach((btn) =>
-              btn.classList.remove('product__size-btn--selected')
-          );
-  
-          button.classList.add('product__size-btn--selected');
-  
-          const urlParams = new URLSearchParams(window.location.search);
-          urlParams.set('size', button.textContent);
-          window.history.replaceState(null, '', '?' + urlParams.toString());
-  
-          const addToBagButton = document.querySelector('.product__button--add-to-bag');
-          if (addToBagButton) {
-              addToBagButton.disabled = false;
-              addToBagButton.textContent = 'add to bag';
-          }
-      }
-  
-      window.addEventListener('resize', rearrangeElementsForMobile);
+      // Оновлюємо текст лічильника
+      favoriteCountElement.textContent = favoriteProducts.length > 0 ? favoriteProducts.length : '';
   }
+
+    updateFavoriteCount();
+}
   if (isCartPage) {
     const cartContainer = document.getElementById('cart-container');
     const totalElement = document.getElementById('total-amount');
