@@ -107,8 +107,13 @@
         <form id="registerForm" action="">
             <div class="register__field">
                 <div class="register__input">
-                    <p class="register__input-label">civility *</p>
-                    <input id="civility" class="primary-input" type="text">
+                    <label for="civility" class="register__input-label">Civility *</label>
+                    <select id="civility" class="primary-input" required>
+                        <option value="mr">Mr.</option>
+                        <option value="miss-mrs-ms">Miss, Mrs, Ms</option>
+                        <option value="mx">Mx</option>
+                        <option value="prefer-not-say">I'd rather not say</option>
+                    </select>
                     <p class="error" id="civilityError"></p>
                 </div>
                 <div class="register__input">
