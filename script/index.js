@@ -1274,26 +1274,27 @@ document.addEventListener('DOMContentLoaded', function () {
           }
   
           // Виводимо доступні розміри
-          const sizeContainer = document.querySelector('.product__size-selection');
-          if (sizeContainer) {
-              sizeContainer.innerHTML = '<p class="product__label">sizes</p>';
-              product.sizes.forEach((size) => {
-                  const sizeButton = document.createElement('button');
-                  sizeButton.classList.add('product__size-btn');
-                  sizeButton.textContent = size;
-                  sizeButton.addEventListener('click', function () {
-                      selectSize(sizeButton);
-                  });
-  
-                  if (size === productSize) {
-                      sizeButton.classList.add('product__size-btn--selected');
-                  }
-  
-                  sizeContainer.appendChild(sizeButton);
-              });
-          } else {
-              console.error('Size container not found');
-          }
+          const sizeContainer = document.querySelector('.product__size-btns'); // Зміни на .product__size-btns
+if (sizeContainer) {
+    sizeContainer.innerHTML = ''; // Очищаємо вміст перед додаванням кнопок
+    product.sizes.forEach((size) => {
+        const sizeButton = document.createElement('button');
+        sizeButton.classList.add('product__size-btn');
+        sizeButton.textContent = size;
+        sizeButton.setAttribute('data-size', size); // Додаємо атрибут data-size
+        sizeButton.addEventListener('click', function () {
+            selectSize(sizeButton);
+        });
+
+        if (size === productSize) {
+            sizeButton.classList.add('product__size-btn--selected');
+        }
+
+        sizeContainer.appendChild(sizeButton); // Додаємо кнопки в .product__size-btns
+    });
+} else {
+    console.error('Size container not found');
+}
   
           // Додаємо назву продукту та ціну в заголовок для мобільних користувачів
           const headerName = document.querySelector('.header__product-name');
