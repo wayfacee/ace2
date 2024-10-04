@@ -2,28 +2,31 @@
 const menuBtn = document.querySelector('#menu-btn');
 const menu = document.querySelector('.menu');
 
+function toggleMenu(event) {
+  event.stopPropagation();
+  if (menu.classList.contains('open')) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+}
 
+function closeIfOpen() {
+  if (menu.classList.contains('open')) {
+    closeMenu();
+  }
+}
 
 if (menuBtn && menu) {
-  menuBtn.addEventListener('click', (event) => {
-    event.stopPropagation(); // Зупиняє спливання події
-    if (menu.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
+  // Для комп'ютерів і мобільних пристроїв
+  menuBtn.addEventListener('click', toggleMenu);
+  menuBtn.addEventListener('touchstart', toggleMenu);
 
-  window.addEventListener("click", () => {
-    if (menu.classList.contains('open')) {
-      closeMenu();
-    }
-  });
+  window.addEventListener('click', closeIfOpen);
+  window.addEventListener('touchstart', closeIfOpen);
 
-  // Додаємо stopPropagation для кліків всередині меню
-  menu.addEventListener('click', (event) => {
-    event.stopPropagation(); // Не закриває меню при кліку всередині
-  });
+  menu.addEventListener('click', (event) => event.stopPropagation());
+  menu.addEventListener('touchstart', (event) => event.stopPropagation());
 }
 
 
