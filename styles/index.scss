@@ -16,6 +16,13 @@
 body {
   background-color: #d9d9d9;
   font-family: 'Sometype Mono', monospace;
+  button{
+    &:hover {
+      box-shadow: 0 1px 15px 0 rgba(32, 33, 36, 0.6) !important;
+  
+  }
+  transition: all 0.3s ease;
+}
 }
 
 .primary-btn {

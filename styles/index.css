@@ -475,6 +475,10 @@ h6 {
   display: none;
 }
 
+#menu-btn {
+  background-color: rgba(208, 208, 208, 0.4);
+}
+
 .filter__hole {
   display: block;
   background-color: #d9d9d9;
@@ -823,6 +827,7 @@ h6 {
 }
 
 .favorite-btn {
+  cursor: pointer;
   position: relative;
   display: flex;
   align-items: center;
@@ -1762,7 +1767,7 @@ h6 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 1140px;
+  max-width: 810px;
   width: 90%;
   text-align: center;
 }
@@ -1841,6 +1846,9 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  .cart-header {
+    display: none !important;
+  }
   .note {
     max-width: 600px;
     text-align: start;
@@ -1898,8 +1906,8 @@ h6 {
 }
 #cart-container {
   display: flex;
-  flex-direction: column; /* Вертикальне вирівнювання елементів */
-  gap: 20px; /* Відступи між товарами */
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -1907,25 +1915,25 @@ h6 {
 
 .cart-item {
   display: flex;
-  align-items: center; /* Вирівнюємо елементи по центру по вертикалі */
+  align-items: center;
   gap: 20px;
 }
 
 .cart-item-image {
-  flex-shrink: 0; /* Щоб зображення не зменшувалось */
+  flex-shrink: 0;
 }
 
 .cart-item-image img {
-  width: 100px; /* Фіксована ширина для зображення */
+  width: 100px;
   height: auto;
 }
 
 .cart-item-info {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 50px; /* Додаємо колонку для кнопки видалення */
+  grid-template-columns: 2fr 1fr 1fr 1fr 50px;
   align-items: center;
   gap: 10px;
-  width: 100%; /* Заповнює доступний простір */
+  width: 100%;
 }
 
 .cart-item-details {
@@ -1949,9 +1957,34 @@ h6 {
   text-align: center;
 }
 
+.cart-header {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 50px;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.cart-header-product {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.cart-header-price,
+.cart-header-quantity,
+.cart-header-total {
+  text-align: center;
+}
+
 body {
   background-color: #d9d9d9;
   font-family: "Sometype Mono", monospace;
+}
+body button {
+  transition: all 0.3s ease;
+}
+body button:hover {
+  box-shadow: 0 1px 15px 0 rgba(32, 33, 36, 0.6) !important;
 }
 
 .primary-btn {
