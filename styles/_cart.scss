@@ -22,7 +22,6 @@
   }
   #cart-container{
     display: flex;
-    flex-direction: column;
     gap: 20px;
   }
 
@@ -75,6 +74,7 @@
 
 .cart-item-quantity {
   display: flex;
+  align-items: center;
   gap: 5px;
   button {
     background-color: transparent;
@@ -110,41 +110,80 @@
     max-width: 200px;
   }
   .cart-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-    width: 300px;
-  p{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    flex-direction: row; 
+    position: relative;
+    .cart-item-price{
+      text-align: start !important;
+    }
   }
-    img {
-      max-width: 100px;
 
-    }
-    .cart-item .cart-item-details {
-      margin-right: 0px;
-    }
-    .cart-item-price
-    .cart-item-details {
-      flex: 1;
-      p {
-        margin: 0px !important;
-        font-size: 16px;
-      }
-    }
-    .cart-item-price {
-      display: none;
-      text-align: center;
-    }
+  .cart-item-info {
+    display: flex !important; 
+    flex-direction: column; 
+    align-items: start !important;
+    width: 100%; 
+  }
+
+  .remove-item {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
   }
 }
 @media (max-width: 400px) {
   .note{
     max-width: 350px;
   }
+}
+#cart-container {
+  display: flex;
+  flex-direction: column; /* Вертикальне вирівнювання елементів */
+  gap: 20px; /* Відступи між товарами */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center; /* Вирівнюємо елементи по центру по вертикалі */
+  gap: 20px;
+}
+
+.cart-item-image {
+  flex-shrink: 0; /* Щоб зображення не зменшувалось */
+}
+
+.cart-item-image img {
+  width: 100px; /* Фіксована ширина для зображення */
+  height: auto;
+}
+
+.cart-item-info {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 50px; /* Додаємо колонку для кнопки видалення */
+  align-items: center;
+  gap: 10px;
+  width: 100%; /* Заповнює доступний простір */
+}
+
+.cart-item-details {
+  display: flex;
+  gap: 5px;
+  text-align: left;
+}
+
+.cart-item-price, .cart-item-quantity, .cart-item-total {
+  text-align: center;
+}
+
+.cart-item-quantity button {
+  padding: 5px;
+  margin: 0 5px;
+}
+
+.remove-item {
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
 }
