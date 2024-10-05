@@ -1,6 +1,6 @@
-// Header
 const menuBtn = document.querySelector('#menu-btn');
 const menu = document.querySelector('.menu');
+let lastOpen = null;
 
 function toggleMenu(event) {
   event.stopPropagation();
@@ -11,31 +11,43 @@ function toggleMenu(event) {
   }
 }
 
-function closeIfOpen() {
-  if (menu.classList.contains('open')) {
-    closeMenu();
+function closeIfOpen(event) {
+  if (lastOpen === 'menu' && menu.classList.contains('open')) {
+    closeMenu();  // Закриваємо меню
+  } else if (lastOpen === 'modal') {
+    closeModals(); // Закриваємо модальні вікна
   }
+  lastOpen = null; // Очищаємо після закриття
 }
-
 if (menuBtn && menu) {
   // Для комп'ютерів і мобільних пристроїв
   menuBtn.addEventListener('click', toggleMenu);
   menuBtn.addEventListener('touchstart', toggleMenu);
 
-  window.addEventListener('click', closeIfOpen);
-  window.addEventListener('touchstart', closeIfOpen);
+  // Закриття меню при кліку поза його межами
+
+  window.addEventListener('click', handleOutsideClick);
+  window.addEventListener('touchstart', handleOutsideClick);
 
   menu.addEventListener('click', (event) => event.stopPropagation());
   menu.addEventListener('touchstart', (event) => event.stopPropagation());
 }
-
-
+function handleOutsideClick(event) {
+  if (!menu.contains(event.target) && event.target !== menuBtn) {
+    closeIfOpen(); // Викликаємо закриття, якщо потрібно
+  }
+}
+window.addEventListener('click', handleOutsideClick);
+window.addEventListener('touchstart', handleOutsideClick);
 
 function openMenu() {
   menu.classList.add('open');
+  lastOpen = 'menu'; 
   const productGridItems = document.querySelectorAll('.product-grid__item');
-  const product = document.querySelector(".product")
-  if(product){
+  const product = document.querySelector(".product");
+  const contolBtns = document.querySelector(".control-buttons");
+  
+  if (product) {
     product.style.zIndex = '-1';
   }
   if (productGridItems.length > 0) {
@@ -43,13 +55,18 @@ function openMenu() {
       item.style.zIndex = '-1';
     });
   }
+  if (contolBtns) {
+    contolBtns.style.bottom = "2px";
+  }
 }
 
 function closeMenu() {
   menu.classList.remove('open');
   const productGridItems = document.querySelectorAll('.product-grid__item');
-  const product = document.querySelector(".product")
-  if(product){
+  const product = document.querySelector(".product");
+  const contolBtns = document.querySelector(".control-buttons");
+
+  if (product) {
     product.style.zIndex = '';
   }
   if (productGridItems.length > 0) {
@@ -57,7 +74,11 @@ function closeMenu() {
       item.style.zIndex = '';
     });
   }
+  if (contolBtns) {
+    contolBtns.style.bottom = "1.7%";
+  }
 }
+
 
 const colorSection = document.querySelector('.filter__color-section');
 const sizeSection = document.querySelector('.filter__size-section');
@@ -120,11 +141,14 @@ const modals = {
 };
 const closeButtons = document.querySelectorAll('.modal__close');
 
+
 function toggleModal(linkText) {
   if (modals[linkText]) {
     modals[linkText].style.display = 'block';
+    lastOpen = 'modal'; 
   }
 }
+
 
 function closeModals() {
   Object.keys(modals).forEach((key) => {
@@ -158,6 +182,7 @@ closeButtons.forEach((button) => {
     const modalId = this.getAttribute('data-modal');
     links.forEach((l) => l.classList.remove('menu__link__active'));
     document.getElementById(modalId).style.display = 'none';
+    lastOpen = 'menu'; 
   }
 
   button.addEventListener('click', closeModal);
@@ -168,6 +193,7 @@ window.addEventListener('click', function (event) {
   if (event.target.classList.contains('modal')) {
     event.target.style.display = 'none';
     links.forEach((l) => l.classList.remove('menu__link__active'));
+    lastOpen = "menu";
   }
 });
 
@@ -175,6 +201,7 @@ window.addEventListener('touchstart', function (event) {
   if (event.target.classList.contains('modal')) {
     event.target.style.display = 'none';
     links.forEach((l) => l.classList.remove('menu__link__active'));
+    lastOpen = "menu";
   }
 });
 const products = [

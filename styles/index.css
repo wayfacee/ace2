@@ -596,6 +596,9 @@ h6 {
   .header__btns {
     width: 56px;
   }
+  .menu.open + .filter .filter__button {
+    bottom: 2px;
+  }
   #menu-btn {
     margin-bottom: 50px;
   }
@@ -701,8 +704,8 @@ h6 {
     flex-direction: column-reverse;
   }
   .menu {
-    top: 51%;
-    left: 49%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
   }
