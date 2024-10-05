@@ -98,11 +98,15 @@
 }
 
     @media(max-width: 768px){
+
       .login__create-account p {
         max-width: 300px ;
       }
       .login{
         padding-top: 150px;
+        &__buttons {
+          margin-top: 0;
+        }
       }
       .register form {
         padding-top: 120px !important;
