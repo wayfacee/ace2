@@ -25,6 +25,7 @@
     flex-direction: column;
     gap: 20px;
   }
+
 }
 
 .cart-item {
@@ -89,6 +90,9 @@
   gap: 20px;
 }
 @media (max-width: 768px) {
+  .note{
+    max-width: 600px;
+  }
   .product {
     font-size: 12px;
   }
@@ -137,5 +141,10 @@
       display: none;
       text-align: center;
     }
+  }
+}
+@media (max-width: 400px) {
+  .note{
+    max-width: 350px;
   }
 }

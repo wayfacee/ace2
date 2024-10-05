@@ -1836,6 +1836,9 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  .note {
+    max-width: 600px;
+  }
   .product {
     font-size: 12px;
   }
@@ -1882,6 +1885,11 @@ h6 {
   .cart-item .cart-item-price {
     display: none;
     text-align: center;
+  }
+}
+@media (max-width: 400px) {
+  .note {
+    max-width: 350px;
   }
 }
 body {
