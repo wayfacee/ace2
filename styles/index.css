@@ -1987,6 +1987,18 @@ body button:hover {
   box-shadow: 0 1px 15px 0 rgba(32, 33, 36, 0.6) !important;
 }
 
+/* Загальний стиль для ефекту димки */
+.page-fade-effect {
+  position: fixed; /* Закріплення елемента внизу екрану */
+  bottom: 0; /* Розташування внизу */
+  left: 0;
+  width: 100%; /* Ширина на всю сторінку */
+  height: 100px; /* Висота димки */
+  pointer-events: none; /* Щоб не заважав клікам */
+  background: linear-gradient(0deg, rgb(231, 236, 234) 0%, rgba(130, 131, 125, 0) 100%);
+  z-index: 5; /* Високий z-index, щоб був поверх вмісту */
+}
+
 .primary-btn {
   font-size: 12px;
   border: 1px solid #000;

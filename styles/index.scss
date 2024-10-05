@@ -24,6 +24,17 @@ body {
   transition: all 0.3s ease;
 }
 }
+/* Загальний стиль для ефекту димки */
+.page-fade-effect {
+  position: fixed; /* Закріплення елемента внизу екрану */
+  bottom: 0; /* Розташування внизу */
+  left: 0;
+  width: 100%; /* Ширина на всю сторінку */
+  height: 100px; /* Висота димки */
+  pointer-events: none; /* Щоб не заважав клікам */
+  background: linear-gradient(0deg, rgba(231, 236, 234, 1) 0%, rgba(130, 131, 125, 0) 100%);
+  z-index: 5; /* Високий z-index, щоб був поверх вмісту */
+}
 
 .primary-btn {
   font-size: 12px;
