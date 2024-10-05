@@ -1794,7 +1794,6 @@ h6 {
 }
 .cart-item .cart-item-details p {
   margin: 0;
-  font-size: 16px;
 }
 .cart-item .cart-item-price {
   width: 100px;
@@ -1854,6 +1853,8 @@ h6 {
     font-size: 12px;
   }
   .checkout__container {
+    padding-left: 20px;
+    padding-right: 20px;
     font-size: 12px;
     text-align: center;
     padding-bottom: 50px;
@@ -1865,7 +1866,11 @@ h6 {
     width: 100%;
   }
   .cart-total {
-    max-width: 200px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: start;
+    justify-content: start;
+    gap: 5px;
   }
   .cart-item {
     flex-direction: row;
