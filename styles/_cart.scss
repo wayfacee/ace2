@@ -92,6 +92,11 @@
 @media (max-width: 768px) {
   .note{
     max-width: 600px;
+    text-align: start;
+  }
+  .checkout-button{
+    width: 100%;
+    max-width: 400px;
   }
   .product {
     font-size: 12px;
@@ -99,6 +104,7 @@
   .checkout__container {
     font-size: 12px;
     text-align: center;
+    padding-bottom: 50px;
   }
   #cart-container {
     font-size: 12px;
