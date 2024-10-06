@@ -574,8 +574,6 @@ h6 {
 }
 
 .back-btn {
-  top: 40px;
-  position: absolute;
 }
 
 @media (max-width: 768px) {
@@ -594,8 +592,8 @@ h6 {
     margin-top: 10px;
   }
   .back-btn {
-    top: 46px;
-    position: absolute;
+    /* top: 0; */
+    /* position: absolute; */
   }
   .header__btns {
     width: 56px;
@@ -1700,6 +1698,8 @@ h6 {
     width: 600px;
     height: 500px;
     scroll-snap-align: center;
+  
+    padding: 0 35px;
   }
 }
 @media (max-width: 600px) {
@@ -1725,6 +1725,8 @@ h6 {
     width: 600px;
     height: 500px;
     scroll-snap-align: center;
+  padding: 0 30px;
+
   }
 }
 @media (max-width: 300px) {
@@ -1736,7 +1738,7 @@ h6 {
        object-fit: cover;
     scroll-snap-type: x mandatory;
     margin: 0 auto;
-    gap: 10px;
+    /* gap: 10px; */
   }
   .product__main-content img {
     -o-object-fit: cover;
@@ -1744,6 +1746,9 @@ h6 {
     width: 600px;
     height: 500px;
     scroll-snap-align: center;
+
+  padding: 0 25px;
+
   }
 }
 @media (max-width: 350px) {

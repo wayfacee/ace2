@@ -1989,3 +1989,16 @@ window.onload = function() {
   }
 };
 
+// document.addEventListener('DOMContentLoaded', function () {
+
+//   const scrollContainer = document.querySelector('.product__main-content');
+//   if(scrollContainer){
+//     scrollContainer.scrollTo({
+//       left: (scrollContainer.scrollWidth - scrollContainer.clientWidth) / 2,
+//       behavior: 'smooth'
+//   });
+//   }
+
+
+//   updateFavoriteCount();
+// });
