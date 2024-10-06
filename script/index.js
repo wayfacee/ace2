@@ -19,19 +19,20 @@ function closeIfOpen(event) {
   }
   lastOpen = null; // Очищаємо після закриття
 }
+
 if (menuBtn && menu) {
   // Для комп'ютерів і мобільних пристроїв
   menuBtn.addEventListener('click', toggleMenu);
-  menuBtn.addEventListener('touchstart', toggleMenu);
+  // menuBtn.addEventListener('touchstart', toggleMenu);
 
   // Закриття меню при кліку поза його межами
-
   window.addEventListener('click', handleOutsideClick);
-  window.addEventListener('touchstart', handleOutsideClick);
+  // window.addEventListener('touchstart', handleOutsideClick);
 
   menu.addEventListener('click', (event) => event.stopPropagation());
   menu.addEventListener('touchstart', (event) => event.stopPropagation());
 }
+
 function handleOutsideClick(event) {
   if (!menu.contains(event.target) && event.target !== menuBtn) {
     closeIfOpen(); // Викликаємо закриття, якщо потрібно
@@ -43,42 +44,31 @@ window.addEventListener('touchstart', handleOutsideClick);
 function openMenu() {
   menu.classList.add('open');
   lastOpen = 'menu'; 
-  const productGridItems = document.querySelectorAll('.product-grid__item');
-  const product = document.querySelector(".product");
-  const contolBtns = document.querySelector(".control-buttons");
-  
-  if (product) {
-    product.style.zIndex = '-1';
-  }
-  if (productGridItems.length > 0) {
-    productGridItems.forEach(item => {
-      item.style.zIndex = '-1';
-    });
-  }
-  if (contolBtns) {
-    contolBtns.style.bottom = "2px";
-  }
+  updateZIndexAndPosition('-1', '2px');
 }
 
 function closeMenu() {
   menu.classList.remove('open');
-  const productGridItems = document.querySelectorAll('.product-grid__item');
-  const product = document.querySelector(".product");
-  const contolBtns = document.querySelector(".control-buttons");
-
-  if (product) {
-    product.style.zIndex = '';
-  }
-  if (productGridItems.length > 0) {
-    productGridItems.forEach(item => {
-      item.style.zIndex = '';
-    });
-  }
-  if (contolBtns) {
-    contolBtns.style.bottom = "1.7%";
-  }
+  updateZIndexAndPosition('', '1.7%');
 }
 
+function updateZIndexAndPosition(zIndexValue, controlBtnBottom) {
+  const productGridItems = document.querySelectorAll('.product-grid__item');
+  const product = document.querySelector(".product");
+  const controlBtns = document.querySelector(".control-buttons");
+
+  if (product) {
+    product.style.zIndex = zIndexValue;
+  }
+  
+  productGridItems.forEach(item => {
+    item.style.zIndex = zIndexValue;
+  });
+
+  if (controlBtns) {
+    controlBtns.style.bottom = controlBtnBottom;
+  }
+}
 
 const colorSection = document.querySelector('.filter__color-section');
 const sizeSection = document.querySelector('.filter__size-section');
