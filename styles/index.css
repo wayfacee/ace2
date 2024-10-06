@@ -1135,7 +1135,7 @@ h6 {
     width: 300px;
   }
   .register__terms {
-    max-width: 300px !important;
+    max-width: 350px !important;
   }
   .register .primary-input {
     width: 300px;
@@ -1780,6 +1780,10 @@ h6 {
   gap: 20px;
 }
 
+.note {
+  max-width: 810px;
+}
+
 .cart-item {
   display: flex;
   flex-direction: row;
@@ -1824,6 +1828,7 @@ h6 {
   justify-content: center;
   align-items: center;
   text-align: center;
+  align-self: flex-start;
 }
 
 .cart-item-quantity {
@@ -1837,7 +1842,7 @@ h6 {
 
 .checkout__container {
   max-width: 1000px;
-  font-size: 16px;
+  font-size: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -204,11 +204,12 @@ window.addEventListener('touchstart', function (event) {
     lastOpen = "menu";
   }
 });
+
 const products = [
   {
     name: 'JACKET SHIELD 1.0',
     image: 'assets/img/product-2.png',
-    category: 'outerwear',
+    type: 'outerwear',
     color: '#4d8986',
     colors: {
       black: 'assets/img/product-2.png',
@@ -218,11 +219,12 @@ const products = [
     gender: 'man',
     price: 1200,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'man'
   },
   {
     name: 'DRESS GLAM 2.1',
     image: 'assets/img/product-2.png',
-    category: 'dresses',
+    type: 'dresses',
     color: '#9ac5a2',
     colors: {
       black: 'assets/img/product-2.png',
@@ -232,11 +234,12 @@ const products = [
     gender: 'woman',
     price: 800,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'woman'
   },
   {
     name: 'SWEATER WARMTH 3.0',
     image: 'assets/img/product-2.png',
-    category: 'sweater',
+    type: 'sweater',
     color: '#1b1b1b',
     colors: {
       black: 'assets/img/product-2.png',
@@ -246,11 +249,12 @@ const products = [
     gender: 'woman',
     price: 500,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'new arrivals'
   },
   {
     name: 'JEANS EDGE 4.0',
     image: 'assets/img/product-2.png',
-    category: 'jeans',
+    type: 'jeans',
     color: '#48575c',
     colors: {
       black: 'assets/img/product-2.png',
@@ -260,11 +264,12 @@ const products = [
     gender: 'man',
     price: 600,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'denim'
   },
   {
     name: 'T-SHIRT PEACE 0.2',
     image: 'assets/img/product-2.png',
-    category: 't-shirts',
+    type: 't-shirts',
     color: '#ffffff',
     colors: {
       black: 'assets/img/product-2.png',
@@ -274,11 +279,12 @@ const products = [
     gender: 'man',
     price: 300,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'new arrivals'
   },
   {
     name: 'SKIRT GRACE 1.5',
     image: 'assets/img/product-2.png',
-    category: 'skirts',
+    type: 'skirts',
     color: '#e07a5f',
     colors: {
       black: 'assets/img/product-2.png',
@@ -288,11 +294,12 @@ const products = [
     gender: 'woman',
     price: 400,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'woman'
   },
   {
     name: 'BLAZER CLASSIC 5.1',
     image: 'assets/img/product-2.png',
-    category: 'outerwear',
+    type: 'outerwear',
     color: '#2a9d8f',
     colors: {
       black: 'assets/img/product-2.png',
@@ -302,11 +309,12 @@ const products = [
     gender: 'woman',
     price: 1000,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'woman'
   },
   {
     name: 'COAT ELEGANT 7.0',
     image: 'assets/img/product-2.png',
-    category: 'outerwear',
+    type: 'outerwear',
     color: '#a1463f',
     colors: {
       black: 'assets/img/product-2.png',
@@ -316,11 +324,12 @@ const products = [
     gender: 'woman',
     price: 1300,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'new arrivals'
   },
   {
     name: 'PANTS COMFORT 2.8',
     image: 'assets/img/product-2.png',
-    category: 'pants',
+    type: 'pants',
     color: '#3c419f',
     colors: {
       black: 'assets/img/product-2.png',
@@ -330,11 +339,12 @@ const products = [
     gender: 'man',
     price: 700,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'man'
   },
   {
     name: 'JEANS SLIM FIT 4.5',
     image: 'assets/img/product-2.png',
-    category: 'jeans',
+    type: 'jeans',
     color: '#292727',
     colors: {
       black: 'assets/img/product-2.png',
@@ -344,11 +354,12 @@ const products = [
     gender: 'man',
     price: 650,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'denim'
   },
   {
     name: 'CARDIGAN SOFT 3.3',
     image: 'assets/img/product-2.png',
-    category: 'sweater',
+    type: 'sweater',
     color: '#d9b5af',
     colors: {
       black: 'assets/img/product-2.png',
@@ -358,11 +369,12 @@ const products = [
     gender: 'woman',
     price: 550,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'woman'
   },
   {
     name: 'PARKA SHIELD 6.0',
     image: 'assets/img/product-2.png',
-    category: 'outerwear',
+    type: 'outerwear',
     color: '#9d3c3a',
     colors: {
       black: 'assets/img/product-2.png',
@@ -372,11 +384,12 @@ const products = [
     gender: 'man',
     price: 1400,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'man'
   },
   {
     name: 'SUMMER DRESS 2.5',
     image: 'assets/img/product-2.png',
-    category: 'dresses',
+    type: 'dresses',
     color: '#e4c6e8',
     colors: {
       black: 'assets/img/product-2.png',
@@ -386,11 +399,12 @@ const products = [
     gender: 'woman',
     price: 850,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'woman'
   },
   {
     name: 'JACKET CASUAL 5.2',
     image: 'assets/img/product-2.png',
-    category: 'outerwear',
+    type: 'outerwear',
     color: '#8a3b9b',
     colors: {
       black: 'assets/img/product-2.png',
@@ -400,11 +414,12 @@ const products = [
     gender: 'man',
     price: 1150,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'man'
   },
   {
     name: 'CHINO PANTS 2.9',
     image: 'assets/img/product-2.png',
-    category: 'pants',
+    type: 'pants',
     color: '#b5d2a3',
     colors: {
       black: 'assets/img/product-2.png',
@@ -414,11 +429,12 @@ const products = [
     gender: 'man',
     price: 750,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'man'
   },
   {
     name: 'PULLOVER COZY 3.7',
     image: 'assets/img/product-2.png',
-    category: 'sweater',
+    type: 'sweater',
     color: '#cc7070',
     colors: {
       black: 'assets/img/product-2.png',
@@ -428,11 +444,12 @@ const products = [
     gender: 'woman',
     price: 520,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'woman'
   },
   {
     name: 'JACKET LEATHER 7.5',
     image: 'assets/img/product-2.png',
-    category: 'outerwear',
+    type: 'outerwear',
     color: '#1b1b1b',
     colors: {
       black: 'assets/img/product-2.png',
@@ -442,11 +459,12 @@ const products = [
     gender: 'man',
     price: 1350,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'new arrivals'
   },
   {
     name: 'MIDI DRESS 5.8',
     image: 'assets/img/product-2.png',
-    category: 'dresses',
+    type: 'dresses',
     color: '#d9b5af',
     colors: {
       black: 'assets/img/product-2.png',
@@ -456,11 +474,12 @@ const products = [
     gender: 'woman',
     price: 900,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'woman'
   },
   {
     name: 'HOODIE RELAX 3.9',
     image: 'assets/img/product-2.png',
-    category: 'sweater',
+    type: 'sweater',
     color: '#4d8986',
     colors: {
       black: 'assets/img/product-2.png',
@@ -470,11 +489,12 @@ const products = [
     gender: 'man',
     price: 650,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'man'
   },
   {
     name: 'PANTS CARGO 4.1',
     image: 'assets/img/product-2.png',
-    category: 'pants',
+    type: 'pants',
     color: '#48575c',
     colors: {
       black: 'assets/img/product-2.png',
@@ -484,25 +504,27 @@ const products = [
     gender: 'man',
     price: 780,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'man'
   },
   {
     name: 'JACKET DENIM 5.4',
     image: 'assets/img/product-2.png',
-    category: 'outerwear',
+    type: 'outerwear',
     color: '#3c419f',
     colors: {
       black: 'assets/img/product-2.png',
       white: 'assets/img/product-2.png',
     },
     sizes: ['S', 'M'],
-    gender: 'man',
+    gender: 'woman',
     price: 1100,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'denim'
   },
   {
     name: 'FLORAL DRESS 2.7',
     image: 'assets/img/product-2.png',
-    category: 'dresses',
+    type: 'dresses',
     color: '#e4c6e8',
     colors: {
       black: 'assets/img/product-2.png',
@@ -512,6 +534,7 @@ const products = [
     gender: 'woman',
     price: 880,
     images: ['assets/img/product-2.png', 'assets/img/product-2.png'],
+    category: 'woman'
   },
 ];
 
@@ -560,10 +583,13 @@ if ($filter) {
         $filter.classList.remove('open'); // Close the filter
       }
     });
+
+
+    let selectedCategory = 'new arrivals';
     let selectedColors = [];
     let selectedSizes = [];
     let selectedGender = null;
-    let selectedCategory = null;
+    let selectedType = null;
     let searchQuery = ''; // Додамо змінну для пошукового запиту
   
     function renderProducts(productsToRender) {
@@ -640,8 +666,10 @@ if ($filter) {
   
     function applyFilters() {
       const filteredProducts = products.filter((product) => {
-        const categoryMatch =
-          !selectedCategory || selectedCategory === 'all' || product.category === selectedCategory;
+        const categoryMatch = selectedCategory === 'new arrivals' || product.category === selectedCategory;
+        
+        const typeMatch = !selectedType ||
+          selectedType === 'all' || product.type === selectedType;
   
         const colorMatch = !selectedColors.length || selectedColors.includes(product.color);
   
@@ -651,7 +679,7 @@ if ($filter) {
   
         const searchMatch = !searchQuery || product.name.toLowerCase().includes(searchQuery.toLowerCase());
   
-        return categoryMatch && colorMatch && sizeMatch && genderMatch && searchMatch;
+        return typeMatch && categoryMatch && colorMatch && sizeMatch && genderMatch && searchMatch;
       });
   
       let favoriteProducts = JSON.parse(localStorage.getItem('favoriteProducts')) || [];
@@ -704,7 +732,8 @@ if ($filter) {
           .querySelectorAll('.filter__categories li')
           .forEach((el) => el.classList.remove('selected'));
         item.classList.add('selected');
-        selectedCategory = item.innerText.toLowerCase();
+
+        selectedType = item.innerText.toLowerCase();
         applyFilters();
       });
     });
@@ -717,8 +746,8 @@ if ($filter) {
           .forEach((el) => el.classList.remove('menu__link__active'));
         menuItem.classList.add('menu__link__active');
         selectedCategory =
-          menuItem.innerText.toLowerCase() === 'all'
-            ? null
+          menuItem.innerText.toLowerCase() === 'new arrivals'
+            ? 'new arrivals'
             : menuItem.innerText.toLowerCase();
         applyFilters();
       });
@@ -1728,9 +1757,6 @@ searchInput.addEventListener('click', function (event) {
     event.stopPropagation();
 });
 }
-
-
-
 
 const countries = [
   { code: '+1', name: 'United States' },
