@@ -30,7 +30,7 @@ if (menuBtn && menu) {
   // window.addEventListener('touchstart', handleOutsideClick);
 
   menu.addEventListener('click', (event) => event.stopPropagation());
-  menu.addEventListener('touchstart', (event) => event.stopPropagation());
+  // menu.addEventListener('touchstart', (event) => event.stopPropagation());
 }
 
 function handleOutsideClick(event) {
