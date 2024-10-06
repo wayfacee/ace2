@@ -1989,22 +1989,3 @@ window.onload = function() {
   }
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-  const scrollContainer = document.querySelector('.product__main-content');
-
-  if (scrollContainer) {
-    let hasScrolled = false; // Флаг для отслеживания, прокрутка ли была выполнена
-
-    scrollContainer.addEventListener('scroll', function() {
-      if (!hasScrolled) {
-        hasScrolled = true; // Устанавливаем флаг, чтобы предотвратить повторный скролл
-        scrollContainer.scrollTo({
-          left: (scrollContainer.scrollWidth - scrollContainer.clientWidth) / 2,
-          behavior: 'smooth'
-        });
-      }
-    });
-  }
-
-  updateFavoriteCount();
-});
