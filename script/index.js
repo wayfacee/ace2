@@ -1267,24 +1267,21 @@ if (tabLinks) {
   showTab('orders');
 }
 
-$toTopBtn = document.querySelector('.control-buttons__top');
-if ($toTopBtn) {
-  $toTopBtn.addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  });
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const toTopBtn = document.querySelector('.control-buttons__top');
+  if (toTopBtn) {
+      toTopBtn.addEventListener('click', function () {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+          });
+          console.log('Scroll to top button clicked');
+      });
+  } else {
+      console.error('Scroll to top button not found');
+  }
+});
 
-if (controlBtns) {
-  controlBtns.addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  });
-}
 
 let $favoriteBtn = document.querySelector('.favorite-btn');
 $favoriteBtn.addEventListener('click', () => {

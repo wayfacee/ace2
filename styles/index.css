@@ -2088,6 +2088,16 @@ body button:hover {
   border: 1px solid #333;
 }
 
+.images {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+  gap: 30px;
+    overflow-x: auto;
+    margin-bottom: 15px;
+}
+
 .primary-checkbox input[type=checkbox]:checked + .checkmark::after {
   content: "";
   position: absolute;
