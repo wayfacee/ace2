@@ -514,6 +514,22 @@ h6 {
   z-index: 10;
 }
 
+.control-buttons__privacy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 83px;
+  height: 20px;
+  width: 20px;
+  right: 2.6%;
+  padding: 25px;
+
+  border: 1px solid black;
+  background-color: #e9e9e9;
+  border-radius: 50%;
+}
+
 .filter__content-container {
   position: absolute;
   top: 100px;
@@ -620,6 +636,16 @@ h6 {
     transform: translateX(40%);
     z-index: 10;
   }
+
+  .control-buttons__privacy {
+    top: auto;
+    position: fixed;
+    bottom: 5%;
+    right: 50px;
+    transform: translateX(40%);
+    z-index: 10;
+  }
+  
   .filter.open .filter__reset {
     width: 69px;
     top: auto;
