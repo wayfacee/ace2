@@ -2,6 +2,12 @@ const menuBtn = document.querySelector('#menu-btn');
 const menu = document.querySelector('.menu');
 let lastOpen = null;
 
+const currencySymbols = {
+  UAH: '₴',
+  EUR: '€',
+  USD: '$'
+};
+
 function toggleMenu(event) {
   event.stopPropagation();
   if (menu.classList.contains('open')) {
@@ -575,7 +581,6 @@ if ($filter) {
       }
     });
 
-
     let selectedCategory = 'new arrivals';
     let selectedColors = [];
     let selectedSizes = [];
@@ -585,16 +590,16 @@ if ($filter) {
   
     function renderProducts(productsToRender) {
       const productGrid = document.querySelector('.product-grid');
+
       productGrid.innerHTML = productsToRender
         .map(
           (product) => `
-                    <div class="product-grid__item" data-name="${product.name}">
-              <img src="${product.image}" alt="${product.name}">
-              <img class="product-like-icon ${favoriteProducts.includes(product.name) ? 'selected' : ''}"
-                   src="assets/img/header-like.svg" alt="Like">
-              <p>${product.name}</p>
-              <p class="product-price">${product.price}грн</p> 
-            </div>
+                <div class="product-grid__item" data-name="${product.name}">
+                    <img src="${product.image}" alt="${product.name}">
+                    <img class="product-like-icon ${favoriteProducts.includes(product.name) ? 'selected' : ''}" src="assets/img/header-like.svg" alt="Like">
+                    <p>${product.name}</p>
+                    <p class="product-price" data-price-uah="${product.price}">${product.price.toFixed(2)}${currencySymbols.UAH}</p> 
+                </div>
           `
         )
         .join('');
@@ -2009,3 +2014,98 @@ window.onload = function() {
 
 //   updateFavoriteCount();
 // });
+
+// ----------- language
+const translations = {
+  ENG: {
+      welcome: "Welcome",
+      menu: 'menu'
+  },
+  UA: {
+      welcome: "Ласкаво просимо",
+      menu: 'меню'
+  }
+};
+
+// Курсы валют относительно UAH
+const conversionRates = {
+  UAH: 1,
+  EUR: 0.024,
+  USD: 0.026,
+};
+
+// Получаем ссылки для языков
+const langLinks = document.querySelectorAll('.lang-link');
+const currencyLinks = document.querySelectorAll('.menu-curr');
+
+    
+function changeLanguage(language) {
+  // Проверяем, существует ли язык в переводах
+  if (translations[language]) {
+      // Сохраняем выбранный язык в localStorage
+      localStorage.setItem('selectedLanguage', language);
+
+      // Обновляем текст меню
+      document.querySelector('#menu-btn').textContent = translations[language].menu;
+
+      // Меняем класс активного языка
+      langLinks.forEach(link => link.classList.remove('menu__link__active'));
+      const activeLink = [...langLinks].find(link => link.getAttribute('data-lang') === language);
+      if (activeLink) {
+          activeLink.classList.add('menu__link__active'); // Устанавливаем активный класс для выбранного языка
+      }
+  } else {
+      console.error(`Language '${language}' not found in translations.`);
+  }
+}
+
+// Устанавливаем обработчики событий для ссылок языка
+langLinks.forEach(link => {
+  link.addEventListener('click', function(event) {
+      event.preventDefault(); // Предотвращаем переход по ссылке
+      const selectedLang = this.getAttribute('data-lang');
+      changeLanguage(selectedLang); // Меняем язык
+  });
+});
+
+function changeCurrency(currency) {
+  // Сохраняем выбранную валюту в localStorage
+  localStorage.setItem('selectedCurrency', currency);
+
+  const productPrices = document.querySelectorAll('.product-price');
+  productPrices.forEach(priceElement => {
+      const priceInUAH = parseFloat(priceElement.getAttribute('data-price-uah')); // Получаем цену в UAH
+      if (!isNaN(priceInUAH)) {
+          const newPrice = (priceInUAH * conversionRates[currency]).toFixed(2); // Пересчитываем цену
+          priceElement.textContent = `${currencySymbols[currency]}${newPrice}`; // Обновляем отображение с символом
+      } else {
+          console.error('Price in UAH is not valid:', priceElement);
+      }
+  });
+
+  // Меняем класс активной валюты
+  currencyLinks.forEach(link => link.classList.remove('menu__link__active'));
+  const activeCurrency = [...currencyLinks].find(link => link.getAttribute('data-currency') === currency);
+  if (activeCurrency) {
+      activeCurrency.classList.add('menu__link__active'); // Устанавливаем активный класс для выбранной валюты
+  }
+}
+
+// Изменение валюты
+currencyLinks.forEach(link => {
+  link.addEventListener('click', function(event) {
+      event.preventDefault(); // Предотвращаем переход по ссылке
+      const selectedCurrency = this.getAttribute('data-currency');
+      changeCurrency(selectedCurrency, this); // Передаем текущий элемент
+  });
+});
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'UA';
+    changeLanguage(savedLanguage);
+
+
+    const savedCurrency = localStorage.getItem('selectedCurrency') || 'UAH';
+    changeCurrency(savedCurrency);
+});
