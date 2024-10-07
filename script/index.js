@@ -23,6 +23,7 @@ function closeIfOpen(event) {
 if (menuBtn && menu) {
   // Для комп'ютерів і мобільних пристроїв
   menuBtn.addEventListener('click', toggleMenu);
+  // * при клике в моб. устр. возникает ошибка (не открывается с 1-раза)
   // menuBtn.addEventListener('touchstart', toggleMenu);
 
   // Закриття меню при кліку поза його межами
@@ -34,12 +35,12 @@ if (menuBtn && menu) {
 }
 
 function handleOutsideClick(event) {
-  if (!menu.contains(event.target) && event.target !== menuBtn) {
+  if (!menu || !menu.contains(event.target) && event.target !== menuBtn) {
     closeIfOpen(); // Викликаємо закриття, якщо потрібно
   }
 }
 window.addEventListener('click', handleOutsideClick);
-window.addEventListener('touchstart', handleOutsideClick);
+// window.addEventListener('touchstart', handleOutsideClick);
 
 function openMenu() {
   menu.classList.add('open');
@@ -1269,6 +1270,15 @@ if (tabLinks) {
 $toTopBtn = document.querySelector('.control-buttons__top');
 if ($toTopBtn) {
   $toTopBtn.addEventListener('click', function () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+}
+
+if (controlBtns) {
+  controlBtns.addEventListener('click', function () {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

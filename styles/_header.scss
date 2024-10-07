@@ -464,10 +464,8 @@
   position: relative;
 }
 
-.back-btn{
-  // top: 40px;
-  // position: absolute;
-}
+// .back-btn{
+// }
 @media (max-width: 768px) {
   .search-input {
     position: fixed;
@@ -483,10 +481,10 @@
     padding: 10px 20px;
     margin-top: 10px;
 }
-  .back-btn{
-    // top: 46px;
-    // position: absolute;
-  }
+  // .back-btn{
+  //   // top: 46px;
+  //   // position: absolute;
+  // }
   .header__btns {
     width: 56px;
   }
@@ -529,12 +527,11 @@
     position: fixed;
     display: flex;
     gap: 15px;
-    width: 245px;
     height: 340px;
     flex-direction: row;
     justify-content: start;
     align-items: start;
-    bottom: 11.9%;
+    bottom: 11%;
     padding: 9px 20px;
     left: 93%;
     right: auto;
@@ -560,7 +557,7 @@
     top: auto;
     position: fixed;
     bottom: 9%;
-    left: 30%;
+    left: 40%;
     right: auto;
     transform: translateX(-90%);
     z-index: 10;
